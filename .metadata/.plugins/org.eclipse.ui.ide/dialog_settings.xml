@@ -11,4 +11,14 @@
 		<list key="ENABLED_TRANSFERS">
 		</list>
 	</section>
+	<section name="SmartImportWizard">
+		<item key="SmartImportRootWizardPage.STORE_HIDE_ALREADY_OPEN" value="false"/>
+		<item key="SmartImportRootWizardPage.STORE_CLOSE_IMPORTED" value="false"/>
+		<item key="SmartImportRootWizardPage.STORE_NESTED_PROJECTS" value="true"/>
+		<item key="SmartImportRootWizardPage.STORE_CONFIGURE_NATURES" value="true"/>
+		<list key="org.eclipse.ui.internal.wizards.datatransfer.SmartImportRootWizardPage.knownSources">
+			<item value="/Users/santiagobualo/STM32Cube/Repository/STM32Cube_FW_F4_V1.27.1/Projects/STM32F401RE-Nucleo/Examples/GPIO/GPIO_IOToggle"/>
+			<item value="/Users/santiagobualo/Documents/SBualo-CESE"/>
+		</list>
+	</section>
 </section>

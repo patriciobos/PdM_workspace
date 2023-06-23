@@ -98,12 +98,12 @@ int main(void)
   {
     /* USER CODE END WHILE */
 
-	  int stateOfPushButton = HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_13);
-	          if ( stateOfPushButton == 1 ) {
-	              HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, GPIO_PIN_RESET);
-	          } else {
-	              HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, GPIO_PIN_SET);
+	  int PrevStateOfPushButton = HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_13);
+	          if ( PrevStateOfPushButton != HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_13) ) {
+	              HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_5);
 	          }
+
+
     /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */

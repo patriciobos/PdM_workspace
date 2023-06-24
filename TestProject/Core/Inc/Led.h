@@ -10,6 +10,7 @@
 
 #define LED_ON 	GPIO_PIN_SET
 #define LED_OFF GPIO_PIN_RESET
+#define LENGTH_FUNCTION_ARRAY 3
 
 #include "main.h"
 //File donde se incluyen todas las definiciones relativas a la operacion de los leds
@@ -21,6 +22,7 @@ struct led_data {
 };
 
 
+typedef void (*function)(struct led_data);
 
 //Cada funcion tiene un parpadeo diferente, para poder usar siempre el mismo led
 

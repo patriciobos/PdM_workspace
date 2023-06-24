@@ -97,26 +97,62 @@ int main(void)
   myLed.GPIO_target = GPIOA;
   myLed.Pin_Nro = GPIO_PIN_5;
 
+
+  function SecuenciaLed1[3] = {&LED1_function, &LED2_function, &LED3_function};
+  function SecuenciaLed2[3] = {&LED2_function, &LED3_function, &LED1_function};
+  function SecuenciaLed3[3] = {&LED3_function, &LED1_function, &LED2_function};
+
+  int iteration_nro = 0;
+
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-    /* USER CODE END WHILE */
+	  int buttonIsPushed =0;
 
-	  int PrevStateOfPushButton = HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_13);
-	          if ( PrevStateOfPushButton != HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_13) ) {
-	        	  LED1_function(myLed);
-	        	  HAL_Delay(1000);
-	        	  LED2_function(myLed);
-	        	  HAL_Delay(1000);
-	        	  LED3_function(myLed);
+	  //El boton es Normal Cerrado
+	          if ( HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_13) == GPIO_PIN_RESET && buttonIsPushed==0 ) {
+
+	        	  buttonIsPushed = 1;
+	        	  switch (iteration_nro){
+					  case 2:{
+						  for (int i=0; i<LENGTH_FUNCTION_ARRAY;i++){
+												SecuenciaLed1[i](myLed);
+												HAL_Delay(1000);
+						  }
+						  iteration_nro = 0;
+						  break;
+					  }
+					  case 1:{
+						  for (int i=0; i<LENGTH_FUNCTION_ARRAY;i++){
+												SecuenciaLed2[i](myLed);
+												HAL_Delay(1000);
+							}
+						  iteration_nro = 2;
+						  break;
+					  }
+					  case 0 : {
+						  for (int i=0; i<LENGTH_FUNCTION_ARRAY;i++){
+							  SecuenciaLed3[i](myLed);
+							  HAL_Delay(1000);
+						  }
+						  iteration_nro = 1;
+						  break;
+					  }
+	        	  } // end Switch
+
+	        		buttonIsPushed = 0;//Release flag push
 	          }
 
 
-    /* USER CODE BEGIN 3 */
   }
+  /* USER CODE END WHILE */
+
+
+  /* USER CODE BEGIN 3 */
+
   /* USER CODE END 3 */
 }
 

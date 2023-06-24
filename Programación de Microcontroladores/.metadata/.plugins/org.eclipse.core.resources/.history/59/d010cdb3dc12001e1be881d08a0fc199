@@ -1,0 +1,22 @@
+/*
+ * Led.h
+ *
+ *  Created on: Jun 24, 2023
+ *      Author: santiagobualo
+ */
+
+#ifndef INC_LED_H_
+#define INC_LED_H_
+
+
+//File donde se incluyen todas las definiciones relativas a la operacion de los leds
+
+struct led_data {
+	GPIO_TypeDef * GPIO_target;
+	uint16_t Pin_Nro;
+
+};
+
+
+
+#endif /* INC_LED_H_ */

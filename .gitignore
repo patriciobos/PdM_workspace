@@ -55,4 +55,4 @@ dkms.conf
 #DEBUG Compile Results
 
 Programacion de Microcontroladores/*/Debug
-Programacion de Microcontroladores/.metadata
+.metadata

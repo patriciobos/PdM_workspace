@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">
-<refactoring comment="Rename resource &apos;Ejercicio_delayNB_2/Ejercicio_delayNB_1.launch&apos; to &apos;Ejercicio_delayNB_2.launch&apos;" description="Rename resource &apos;Ejercicio_delayNB_1.launch&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="Ejercicio_delayNB_1.launch" name="Ejercicio_delayNB_2.launch" stamp="1634418676644" updateReferences="true"/>
-</session>

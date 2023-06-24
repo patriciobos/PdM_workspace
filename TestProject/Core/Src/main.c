@@ -22,6 +22,8 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 
+#include "Led.h"
+
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -90,6 +92,11 @@ int main(void)
   MX_USART2_UART_Init();
   /* USER CODE BEGIN 2 */
 
+
+  struct led_data myLed;
+  myLed.GPIO_target = GPIOA;
+  myLed.Pin_Nro = GPIO_PIN_5;
+
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -100,7 +107,11 @@ int main(void)
 
 	  int PrevStateOfPushButton = HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_13);
 	          if ( PrevStateOfPushButton != HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_13) ) {
-	              HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_5);
+	        	  LED1_function(myLed);
+	        	  HAL_Delay(1000);
+	        	  LED2_function(myLed);
+	        	  HAL_Delay(1000);
+	        	  LED3_function(myLed);
 	          }
 
 

@@ -284,6 +284,35 @@ static void MX_GPIO_Init(void)
 
 /* USER CODE BEGIN 4 */
 
+
+void delayInit( delay_t * delay, tick_t duration ){ //Setea el tiempo pero no inicializa el tim
+
+	delay->running = false;
+	delay->duration = duration;
+
+}
+
+bool_t delayRead( delay_t * delay ){
+
+	if (delay->running == false){ 				//No estaba inicializado
+		delay->startTime = HAL_GetTick();
+	}else{
+		if( HAL_GetTick() - delay->startTime > delay->duration){
+			//Termino el tiempo
+			delay->running = false;
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+}
+
+void delayWrite( delay_t * delay, tick_t duration ){
+
+	delay->duration = duration;
+}
+
 /* USER CODE END 4 */
 
 /**

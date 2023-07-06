@@ -28,7 +28,7 @@ extern "C" {
 
 /* Includes ------------------------------------------------------------------*/
 #include "stm32f4xx_hal.h"
-
+#include <stdbool.h>
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 
@@ -72,7 +72,22 @@ void Error_Handler(void);
 #define SWO_Pin GPIO_PIN_3
 #define SWO_GPIO_Port GPIOB
 
+
+
 /* USER CODE BEGIN Private defines */
+
+typedef uint32_t tick_t; // Qué biblioteca se debe incluir para que esto compile?
+typedef bool bool_t;	  // Qué biblioteca se debe incluir para que esto compile?
+typedef struct{
+   tick_t startTime;
+   tick_t duration;
+   bool_t running;
+} delay_t;
+
+void delayInit( delay_t * delay, tick_t duration );
+bool_t delayRead( delay_t * delay );
+void delayWrite( delay_t * delay, tick_t duration );
+
 
 /* USER CODE END Private defines */
 

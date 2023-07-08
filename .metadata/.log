@@ -1981,3 +1981,9 @@ Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -keyring /Users/santi
 
 !ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2023-07-04 20:34:02.523
 !MESSAGE Started RMI Server, listening on port 41337
+
+!ENTRY org.eclipse.cdt.core 1 0 2023-07-06 20:42:57.567
+!MESSAGE Indexed 'Practica 3' (22 sources, 82 headers) in 3.74 sec: 4,715 declarations; 22,526 references; 0 unresolved inclusions; 1 syntax errors; 2 unresolved names (0.0073%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2023-07-06 20:44:45.543
+!MESSAGE Indexed 'Practica 3' (22 sources, 82 headers) in 2.76 sec: 4,715 declarations; 22,526 references; 0 unresolved inclusions; 1 syntax errors; 2 unresolved names (0.0073%)

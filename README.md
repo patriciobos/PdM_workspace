@@ -32,3 +32,35 @@ Si, ya que esta relacionado con el efecto que queremos disminuir.
 
 
 
+### Practica 2
+
+La carpeta Practica 2 contiene el proyecto finalizado correspondiente.  Debido a que la placa nucleo con la que se realizo el trabajo no posee mas de 1 led para uso del usuario, para esta practica se utilizaron los pines pb10,pb4 y pb5 como gpio output para colocar 3 leds (LED1,LED2 y LED3 respectivamente).
+
+>¿Se pueden cambiar los tiempos de encendido de cada led fácilmente en un solo lugar del código o éstos están hardcodeados?
+
+Como la idea es que el tiempo siempre sea el mismo en todo momento de ejecucion, su valor va a quedar almacenado en una constante. Si yo debo utilizar muchas veces esa constante, lo mejor es crear una variable con la directiva DEFINE, para asi si el dia de mañana deseo cambiar el tiempo, solo tengo que editarlo en un solo lado.
+
+>¿Qué bibliotecas estándar se debieron agregar para que el código compile? Si las funcionalidades crecieran, habría que pensar cuál sería el mejor lugar para incluir esas bibliotecas y algunos typedefs que se usan en el ejercicio.
+
+La libreria agregada es la stdbool.h. Cada vez que se agregan .h se debe ser precavido para evitar colocarlos mas de una vez en el codigo final, ya que eso da error.
+
+>¿Es adecuado el control de los parámetros pasados por el usuario que se hace en las funciones implementadas? ¿Se controla que sean valores válidos? ¿Se controla que estén dentro de los rangos correctos?
+
+Esto lo hemos discutido la clase pasada, y llegamos a la conclucion de que cada vez que uno realiza un driver o una aplicacion,siempre se debe proteger contra los usos herroneos de la misma
+
+### Practica 3
+
+La carpeta Practica 3ccontiene el proyecto finalizado correspondiente.  Debido a que la placa nucleo con la que se realizo el trabajo no posee mas de 1 led para uso del usuario, para esta practica se utilizaron los pines pb10,pb4 y pb5 como gpio output para colocar 3 leds (LED1,LED2 y LED3 respectivamente).
+
+>¿Se pueden cambiar los tiempos de encendido de cada led fácilmente en un solo lugar del código o éstos están hardcodeados?
+
+Como la idea es que el tiempo siempre sea el mismo en todo momento de ejecucion, su valor va a quedar almacenado en una constante. Si yo debo utilizar muchas veces esa constante, lo mejor es crear una variable con la directiva DEFINE, para asi si el dia de mañana deseo cambiar el tiempo, solo tengo que editarlo en un solo lado.
+
+>¿Qué bibliotecas estándar se debieron agregar para que el código compile? Si las funcionalidades crecieran, habría que pensar cuál sería el mejor lugar para incluir esas bibliotecas y algunos typedefs que se usan en el ejercicio.
+
+La libreria agregada es la stdbool.h. Cada vez que se agregan .h se debe ser precavido para evitar colocarlos mas de una vez en el codigo final, ya que eso da error.
+
+>¿Es adecuado el control de los parámetros pasados por el usuario que se hace en las funciones implementadas? ¿Se controla que sean valores válidos? ¿Se controla que estén dentro de los rangos correctos?
+
+Esto lo hemos discutido la clase pasada, y llegamos a la conclucion de que cada vez que uno realiza un driver o una aplicacion,siempre se debe proteger contra los usos herroneos de la misma
+

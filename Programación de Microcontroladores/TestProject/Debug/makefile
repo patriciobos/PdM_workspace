@@ -34,34 +34,34 @@ $(wildcard ../makefile.init) \
 $(wildcard ../makefile.targets) \
 
 
-BUILD_ARTIFACT_NAME := TestProject
+BUILD_ARTIFACT_NAME := Practica 1
 BUILD_ARTIFACT_EXTENSION := elf
 BUILD_ARTIFACT_PREFIX :=
 BUILD_ARTIFACT := $(BUILD_ARTIFACT_PREFIX)$(BUILD_ARTIFACT_NAME)$(if $(BUILD_ARTIFACT_EXTENSION),.$(BUILD_ARTIFACT_EXTENSION),)
 
 # Add inputs and outputs from these tool invocations to the build variables 
 EXECUTABLES += \
-TestProject.elf \
+Practica\ 1.elf \
 
 MAP_FILES += \
-TestProject.map \
+Practica\ 1.map \
 
 SIZE_OUTPUT += \
 default.size.stdout \
 
 OBJDUMP_LIST += \
-TestProject.list \
+Practica\ 1.list \
 
 
 # All Target
 all: main-build
 
 # Main-build Target
-main-build: TestProject.elf secondary-outputs
+main-build: Practica\ 1.elf secondary-outputs
 
 # Tool invocations
-TestProject.elf TestProject.map: $(OBJS) $(USER_OBJS) /Users/santiagobualo/Documents/SBualo-CESE/Programación\ de\ Microcontroladores/TestProject/STM32F401RETX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "TestProject.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"/Users/santiagobualo/Documents/SBualo-CESE/Programación de Microcontroladores/TestProject/STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="TestProject.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Practica\ 1.elf Practica\ 1.map: $(OBJS) $(USER_OBJS) /Users/santiagobualo/Documents/SBualo-CESE/Programación\ de\ Microcontroladores/TestProject/STM32F401RETX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "Practica 1.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"/Users/santiagobualo/Documents/SBualo-CESE/Programación de Microcontroladores/TestProject/STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Practica 1.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
@@ -70,14 +70,14 @@ default.size.stdout: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
 	@echo 'Finished building: $@'
 	@echo ' '
 
-TestProject.list: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-objdump -h -S $(EXECUTABLES) > "TestProject.list"
+Practica\ 1.list: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-objdump -h -S $(EXECUTABLES) > "Practica 1.list"
 	@echo 'Finished building: $@'
 	@echo ' '
 
 # Other Targets
 clean:
-	-$(RM) TestProject.elf TestProject.list TestProject.map default.size.stdout
+	-$(RM) Practica\ 1.elf Practica\ 1.list Practica\ 1.map Practica\\ 1.elf default.size.stdout
 	-@echo ' '
 
 secondary-outputs: $(SIZE_OUTPUT) $(OBJDUMP_LIST)

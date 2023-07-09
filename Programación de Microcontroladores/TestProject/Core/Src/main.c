@@ -305,6 +305,7 @@ bool_t delayRead( delay_t * delay ){
 			return false;
 		}
 	}
+	return false;
 
 }
 

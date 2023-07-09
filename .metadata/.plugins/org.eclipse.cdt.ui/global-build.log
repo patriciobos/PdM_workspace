@@ -1,4 +1,4 @@
-21:47:52 **** Incremental Build of configuration Debug for project Practica 3 ****
+17:01:03 **** Build of configuration Debug for project Practica 3 ****
 make -j9 all 
 arm-none-eabi-size   Practica\ 3.elf 
    text	   data	    bss	    dec	    hex	filename

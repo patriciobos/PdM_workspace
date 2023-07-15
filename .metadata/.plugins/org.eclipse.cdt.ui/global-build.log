@@ -1,7 +1,55 @@
-17:01:03 **** Build of configuration Debug for project Practica 3 ****
+17:01:25 **** Incremental Build of configuration Debug for project Practica-4-Ej2 ****
 make -j9 all 
-arm-none-eabi-size   Practica\ 3.elf 
+arm-none-eabi-gcc "../Drivers/API/Src/FSM.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"/Users/santiagobualo/Documents/SBualo-CESE/Programación de Microcontroladores/Practica4-Ej2/Drivers/API/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/API/Src/FSM.d" -MT"Drivers/API/Src/FSM.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/API/Src/FSM.o"
+../Drivers/API/Src/FSM.c: In function 'debounceFSM_timer_update':
+../Drivers/API/Src/FSM.c:31:9: warning: enumeration value 'BUTTON_UP' not handled in switch [-Wswitch]
+   31 |         switch(FSMPointer){
+      |         ^~~~~~
+../Drivers/API/Src/FSM.c:31:9: warning: enumeration value 'BUTTON_DOWN' not handled in switch [-Wswitch]
+../Drivers/API/Src/FSM.c: In function 'debounceFSM_button_update':
+../Drivers/API/Src/FSM.c:63:9: warning: enumeration value 'BUTTON_FALLING' not handled in switch [-Wswitch]
+   63 |         switch (*myFSM) {
+      |         ^~~~~~
+../Drivers/API/Src/FSM.c:63:9: warning: enumeration value 'BUTTON_RAISING' not handled in switch [-Wswitch]
+arm-none-eabi-gcc -o "Practica-4-Ej2.elf" @"objects.list"   -mcpu=cortex-m4 -T"/Users/santiagobualo/Documents/SBualo-CESE/Programación de Microcontroladores/Practica4-Ej2/STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Practica-4-Ej2.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Practica-4-Ej2.elf
+ 
+arm-none-eabi-size   Practica-4-Ej2.elf 
+arm-none-eabi-objdump -h -S  Practica-4-Ej2.elf  > "Practica-4-Ej2.list"
    text	   data	    bss	    dec	    hex	filename
-   8360	     20	   1636	  10016	   2720	Practica 3.elf
+   8444	     24	   1664	  10132	   2794	Practica-4-Ej2.elf
 Finished building: default.size.stdout
+ 
+Finished building: Practica-4-Ej2.list
+ 
+17:01:54 **** Incremental Build of configuration Debug for project Practica-4-Ej2 ****
+make -j9 all 
+arm-none-eabi-size   Practica-4-Ej2.elf 
+   text	   data	    bss	    dec	    hex	filename
+   8444	     24	   1664	  10132	   2794	Practica-4-Ej2.elf
+Finished building: default.size.stdout
+ 
+17:07:13 **** Incremental Build of configuration Debug for project Practica-4-Ej2 ****
+make -j9 all 
+arm-none-eabi-gcc "../Drivers/API/Src/FSM.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"/Users/santiagobualo/Documents/SBualo-CESE/Programación de Microcontroladores/Practica4-Ej2/Drivers/API/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/API/Src/FSM.d" -MT"Drivers/API/Src/FSM.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/API/Src/FSM.o"
+../Drivers/API/Src/FSM.c: In function 'debounceFSM_timer_update':
+../Drivers/API/Src/FSM.c:31:9: warning: enumeration value 'BUTTON_UP' not handled in switch [-Wswitch]
+   31 |         switch(FSMPointer){
+      |         ^~~~~~
+../Drivers/API/Src/FSM.c:31:9: warning: enumeration value 'BUTTON_DOWN' not handled in switch [-Wswitch]
+../Drivers/API/Src/FSM.c: In function 'debounceFSM_button_update':
+../Drivers/API/Src/FSM.c:63:9: warning: enumeration value 'BUTTON_FALLING' not handled in switch [-Wswitch]
+   63 |         switch (*myFSM) {
+      |         ^~~~~~
+../Drivers/API/Src/FSM.c:63:9: warning: enumeration value 'BUTTON_RAISING' not handled in switch [-Wswitch]
+arm-none-eabi-gcc -o "Practica-4-Ej2.elf" @"objects.list"   -mcpu=cortex-m4 -T"/Users/santiagobualo/Documents/SBualo-CESE/Programación de Microcontroladores/Practica4-Ej2/STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Practica-4-Ej2.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Practica-4-Ej2.elf
+ 
+arm-none-eabi-size   Practica-4-Ej2.elf 
+arm-none-eabi-objdump -h -S  Practica-4-Ej2.elf  > "Practica-4-Ej2.list"
+   text	   data	    bss	    dec	    hex	filename
+   8408	     24	   1664	  10096	   2770	Practica-4-Ej2.elf
+Finished building: default.size.stdout
+ 
+Finished building: Practica-4-Ej2.list
  

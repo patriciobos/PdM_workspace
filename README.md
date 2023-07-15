@@ -64,3 +64,12 @@ La libreria agregada es la stdbool.h. Cada vez que se agregan .h se debe ser pre
 
 Esto lo hemos discutido la clase pasada, y llegamos a la conclucion de que cada vez que uno realiza un driver o una aplicacion,siempre se debe proteger contra los usos herroneos de la misma
 
+
+### Practica 4
+La practica 4 esta dividida en dos proyectos. Si bien el comportamiento en ambos es el mismo, el ejercico 2 es mucho mas prolijo en terminos de codigo.
+El segundo ejercicio se realizo con interrupciones por flanco del boton de la placa. Sumado a esto, se reacomodo el driver del timer systic de forma tal que sea posible inicializar el timer y controlar si se cumplio desde dos funciones distintas.
+
+>¿Es adecuado el control de los parámetros pasados por el usuario que se hace en las funciones implementadas? ¿Se controla que sean valores válidos? ¿Se controla que estén dentro de los rangos correctos? 
+
+>¿Se nota una mejora en la detección de las pulsaciones respecto a la práctica 0? ¿Se pierden pulsaciones? ¿Hay falsos positivos?
+

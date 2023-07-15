@@ -112,7 +112,7 @@ int main(void)
   delayInit(&AntyBounceTimmer,ANTI_BOUNCE_TIMER);
 
 
-  LED_PLACA_init(LED);
+  LED_PLACA_init(&LED);
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
@@ -120,10 +120,14 @@ int main(void)
   {
     /* USER CODE END WHILE */
 	  GPIO_PinState ButtonState = ReadButton();
+	  if (TimersUp){
+		  delayRead(&AntyBounceTimmer);
+	  }
 	  if (ButtonState != ReadButton() || (TimersUp ==true && !AntyBounceTimmer.running) ){	//Si recibo algun evento Pulsar boton o x tiempo
-		  debounceFSM_update(FSMState);
+		  debounceFSM_update(&FSMState);
 
 	  }
+
 
   }
 
@@ -134,10 +138,10 @@ void debounceFSM_init(debounceState_t *myFSM){		// debe cargar el estado inicial
 
 	*myFSM = BUTTON_UP;
 }
-void debounceFSM_update(debounceState_t myFSM){
-	switch (myFSM) {
+void debounceFSM_update(debounceState_t *myFSM){
+	switch (*myFSM) {
 	case BUTTON_UP: {
-		myFSM = BUTTON_FALLING;
+		*myFSM = BUTTON_FALLING;
 		TimersUp= true;
 		delayRead(&AntyBounceTimmer);
 		break;
@@ -145,34 +149,34 @@ void debounceFSM_update(debounceState_t myFSM){
 	case BUTTON_FALLING: {
 
 		if (!ReadButton()){  //Vuelvo a ver el estado del boton, si es igual -> avanzo
-			myFSM = BUTTON_DOWN;
+			*myFSM = BUTTON_DOWN;
 			buttonPressed();
 			TimersUp= false;
 		}else {
-			myFSM = BUTTON_UP;
+			*myFSM = BUTTON_UP;
 			TimersUp= false;
 		}
 		break;
 		}
 	case BUTTON_DOWN: {
-			myFSM = BUTTON_RAISING;
+			*myFSM = BUTTON_RAISING;
 			TimersUp= true;
 			delayRead(&AntyBounceTimmer);
 			break;
 		}
 	case BUTTON_RAISING: {
 		if (ReadButton()){ //Vuelvo a ver el estado del boton, si es igual -> avanzo
-					myFSM = BUTTON_UP;
+					*myFSM = BUTTON_UP;
 					buttonReleased();
 					TimersUp= false;
 				}else {
-					myFSM = BUTTON_DOWN;
+					*myFSM = BUTTON_DOWN;
 					TimersUp= false;
 				}
 		break;
 		}
 	default:
-		myFSM = BUTTON_UP;
+		*myFSM = BUTTON_UP;
 		break;
 	}
 

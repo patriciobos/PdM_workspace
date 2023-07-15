@@ -82,8 +82,8 @@ BUTTON_RAISING,
 } debounceState_t;
 
 
-void debounceFSM_init(*debounceState_t fsm);		// debe cargar el estado inicial
-void debounceFSM_update(debounceState_t myFSM);	// debe leer las entradas, resolver la lógica de
+void debounceFSM_init(debounceState_t *fsm);		// debe cargar el estado inicial
+void debounceFSM_update(debounceState_t *myFSM);	// debe leer las entradas, resolver la lógica de
 					// transición de estados y actualizar las salidas
 void buttonPressed(void);			// debe invertir el estado del LED1
 void buttonReleased(void);		// debe invertir el estado del LED3

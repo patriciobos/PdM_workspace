@@ -43,10 +43,10 @@
 //void LED3_TURN_OFF(struct led_data);
 //void LED3_TOGGLE(struct led_data);
 
-void LED_PLACA_init(struct led_data ledPlaca){
+void LED_PLACA_init(struct led_data *ledPlaca){
 
-	ledPlaca.GPIO_target = LD2_GPIO_Port;
-	ledPlaca.Pin_Nro = LD2_Pin;
+	ledPlaca->GPIO_target = LD2_GPIO_Port;
+	ledPlaca->Pin_Nro = LD2_Pin;
 }
 
 void LED_TURN_ON(struct led_data led){

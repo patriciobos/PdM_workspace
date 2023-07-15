@@ -35,7 +35,7 @@ struct led_data {
 
 void LED_init(struct led_data,struct led_data,struct led_data);
 
-void LED_PLACA_init(struct led_data);
+void LED_PLACA_init(struct led_data * led);
 
 
 void LED1_init(struct led_data);

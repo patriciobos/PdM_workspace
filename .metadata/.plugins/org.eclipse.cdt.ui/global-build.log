@@ -1,47 +1,21 @@
-15:05:16 **** Incremental Build of configuration Debug for project Practica-4 ****
+15:19:13 **** Incremental Build of configuration Debug for project Practica-4 ****
 make -j9 all 
-arm-none-eabi-gcc "../Drivers/API/Src/API_delay.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"/Users/santiagobualo/Documents/SBualo-CESE/Programación de Microcontroladores/Practica 4/Drivers/API/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/API/Src/API_delay.d" -MT"Drivers/API/Src/API_delay.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/API/Src/API_delay.o"
-arm-none-eabi-gcc "../Drivers/API/Src/Led.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"/Users/santiagobualo/Documents/SBualo-CESE/Programación de Microcontroladores/Practica 4/Drivers/API/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/API/Src/Led.d" -MT"Drivers/API/Src/Led.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/API/Src/Led.o"
 arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"/Users/santiagobualo/Documents/SBualo-CESE/Programación de Microcontroladores/Practica 4/Drivers/API/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
-arm-none-eabi-gcc "../Core/Src/stm32f4xx_hal_msp.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"/Users/santiagobualo/Documents/SBualo-CESE/Programación de Microcontroladores/Practica 4/Drivers/API/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/stm32f4xx_hal_msp.d" -MT"Core/Src/stm32f4xx_hal_msp.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/stm32f4xx_hal_msp.o"
-arm-none-eabi-gcc "../Core/Src/stm32f4xx_it.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"/Users/santiagobualo/Documents/SBualo-CESE/Programación de Microcontroladores/Practica 4/Drivers/API/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/stm32f4xx_it.d" -MT"Core/Src/stm32f4xx_it.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/stm32f4xx_it.o"
-In file included from ../Drivers/API/Src/API_delay.c:9:
-../Core/Inc/main.h:85:23: error: expected declaration specifiers or '...' before '*' token
-   85 | void debounceFSM_init(*debounceState_t fsm);            // debe cargar el estado inicial
-      |                       ^
-In file included from /Users/santiagobualo/Documents/SBualo-CESE/Programación de Microcontroladores/Practica 4/Drivers/API/Inc/Led.h:15,
-                 from ../Drivers/API/Src/Led.c:9:
-../Core/Inc/main.h:85:23: error: expected declaration specifiers or '...' before '*' token
-   85 | void debounceFSM_init(*debounceState_t fsm);            // debe cargar el estado inicial
-      |                       ^
-In file included from ../Core/Src/main.c:20:
-../Core/Inc/main.h:85:23: error: expected declaration specifiers or '...' before '*' token
-   85 | void debounceFSM_init(*debounceState_t fsm);            // debe cargar el estado inicial
-      |                       ^
-In file included from ../Core/Src/stm32f4xx_hal_msp.c:22:
-../Core/Inc/main.h:85:23: error: expected declaration specifiers or '...' before '*' token
-   85 | void debounceFSM_init(*debounceState_t fsm);            // debe cargar el estado inicial
-      |                       ^
-make: *** [Drivers/API/Src/subdir.mk:25: Drivers/API/Src/API_delay.o] Error 1
-make: *** Waiting for unfinished jobs....
-make: *** [Drivers/API/Src/subdir.mk:25: Drivers/API/Src/Led.o] Error 1
-make: *** [Core/Src/subdir.mk:34: Core/Src/stm32f4xx_hal_msp.o] Error 1
-In file included from ../Core/Src/stm32f4xx_it.c:21:
-../Core/Inc/main.h:85:23: error: expected declaration specifiers or '...' before '*' token
-   85 | void debounceFSM_init(*debounceState_t fsm);            // debe cargar el estado inicial
-      |                       ^
-make: *** [Core/Src/subdir.mk:34: Core/Src/stm32f4xx_it.o] Error 1
-../Core/Src/main.c: In function 'main':
-../Core/Src/main.c:110:3: warning: implicit declaration of function 'debounceFSM_init'; did you mean 'debounceFSM_update'? [-Wimplicit-function-declaration]
-  110 |   debounceFSM_init(&FSMState);  //Inicializo la FSM
-      |   ^~~~~~~~~~~~~~~~
-      |   debounceFSM_update
-../Core/Src/main.c: At top level:
-../Core/Src/main.c:133:6: warning: conflicting types for 'debounceFSM_init'; have 'void(debounceState_t *)'
-  133 | void debounceFSM_init(debounceState_t *myFSM){          // debe cargar el estado inicial
-      |      ^~~~~~~~~~~~~~~~
-../Core/Src/main.c:110:3: note: previous implicit declaration of 'debounceFSM_init' with type 'void(debounceState_t *)'
-  110 |   debounceFSM_init(&FSMState);  //Inicializo la FSM
-      |   ^~~~~~~~~~~~~~~~
-make: *** [Core/Src/subdir.mk:34: Core/Src/main.o] Error 1
-"make -j9 all" terminated with exit code 2. Build might be incomplete.
+arm-none-eabi-gcc -o "Practica-4.elf" @"objects.list"   -mcpu=cortex-m4 -T"/Users/santiagobualo/Documents/SBualo-CESE/Programación de Microcontroladores/Practica 4/STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Practica-4.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Practica-4.elf
+ 
+arm-none-eabi-size   Practica-4.elf 
+arm-none-eabi-objdump -h -S  Practica-4.elf  > "Practica-4.list"
+   text	   data	    bss	    dec	    hex	filename
+   8312	     24	   1664	  10000	   2710	Practica-4.elf
+Finished building: default.size.stdout
+ 
+Finished building: Practica-4.list
+ 
+15:19:17 **** Incremental Build of configuration Debug for project Practica-4 ****
+make -j9 all 
+arm-none-eabi-size   Practica-4.elf 
+   text	   data	    bss	    dec	    hex	filename
+   8312	     24	   1664	  10000	   2710	Practica-4.elf
+Finished building: default.size.stdout
+ 

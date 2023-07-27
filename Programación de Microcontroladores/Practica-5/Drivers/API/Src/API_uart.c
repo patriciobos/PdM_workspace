@@ -12,6 +12,10 @@
 
 
 static UART_HandleTypeDef huart2;
+
+static void MX_USART2_UART_Init(void);
+
+
 bool uartInit(void){
 
 	bool CorrectInicialization = false;
@@ -19,6 +23,15 @@ bool uartInit(void){
 	if (HAL_UART_Init(&huart2) == HAL_OK)
 	  {
 		//UART PRINT VARIABLES de CONFIGURACION
+		uint16_t size = sizeof(uint8_t);
+		uartSendStringSize(&huart2.Init.BaudRate ,size);
+		uartSendStringSize((uint8_t)huart2.Init.WordLength,size);
+		uartSendStringSize((uint8_t)huart2.Init.StopBits,size);
+		uartSendStringSize((uint8_t)huart2.Init.Parity,size);
+		uartSendStringSize((uint8_t)huart2.Init.Mode,size);
+		uartSendStringSize((uint8_t)huart2.Init.HwFlowCtl,size);
+		uartSendStringSize((uint8_t)huart2.Init.OverSampling ,size);
+
 		CorrectInicialization=true;
 	  }
 	return CorrectInicialization;
@@ -26,30 +39,37 @@ bool uartInit(void){
 
 void uartSendString(uint8_t * pstring){
 
-	 HAL_USART_Transmit(&huart2, pstring, strlen(pstring), UART_TIMER_MS(50));
+	 int length = 0;
+
+	  // Loop through the array, counting the number of bytes before the terminating null character.
+	  while (pstring[length] != '\0') {
+	    length++;
+	  }
+
+	 HAL_UART_Transmit(&huart2, pstring, length, UART_TIMER_MS(50));
 
 
 }
 
 void uartSendStringSize(uint8_t * pstring, uint16_t size){
 
-	 HAL_USART_Transmit(&huart2, pstring, size, UART_TIMER_MS(50));
+	 HAL_UART_Transmit(&huart2, pstring, size, UART_TIMER_MS(50));
 
 }
 void uartReceiveStringSize(uint8_t * pstring, uint16_t size){
 
-	HAL_USART_Receive(&huart2, pstring, size, UART_TIMER_MS(50));
+	HAL_UART_Receive(&huart2, pstring, size, UART_TIMER_MS(50));
 
 }
 
 
 
-static int MX_USART2_UART_Init(void)
+static void MX_USART2_UART_Init(void)
 {
 
 
   huart2.Instance = USART2;
-  huart2.Init.BaudRate = 115200;
+  huart2.Init.BaudRate = UART_BAUDRATE;
   huart2.Init.WordLength = UART_WORDLENGTH_8B;
   huart2.Init.StopBits = UART_STOPBITS_1;
   huart2.Init.Parity = UART_PARITY_NONE;

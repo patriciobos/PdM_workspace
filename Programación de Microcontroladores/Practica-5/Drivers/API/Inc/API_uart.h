@@ -12,13 +12,11 @@
 #include <stdint.h>
 #include "stm32f4xx_hal.h"
 
-#define USART_TX_Pin GPIO_PIN_2
-#define USART_TX_GPIO_Port GPIOA
-#define USART_RX_Pin GPIO_PIN_3
-#define USART_RX_GPIO_Port GPIOA
+
+
 
 #define UART_TIMER_MS(ms) ((uint32_t)((ms) * (SystemCoreClock / 1000)))
-
+#define UART_BAUDRATE 115200
 
 bool uartInit(void);
 void uartSendString(uint8_t * pstring);

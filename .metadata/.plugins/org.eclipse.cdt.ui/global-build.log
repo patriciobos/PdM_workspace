@@ -1,65 +1,78 @@
-19:36:14 **** Incremental Build of configuration Debug for project Practica-5 ****
+19:59:54 **** Incremental Build of configuration Debug for project Practica-5 ****
 make -j9 all 
 arm-none-eabi-gcc "../Drivers/API/Src/API_uart.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"/Users/santiagobualo/Documents/SBualo-CESE/Programación de Microcontroladores/Practica-5/Drivers/API/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/API/Src/API_uart.d" -MT"Drivers/API/Src/API_uart.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/API/Src/API_uart.o"
-arm-none-eabi-gcc "../Core/Src/stm32f4xx_hal_msp.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"/Users/santiagobualo/Documents/SBualo-CESE/Programación de Microcontroladores/Practica-5/Drivers/API/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/stm32f4xx_hal_msp.d" -MT"Core/Src/stm32f4xx_hal_msp.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/stm32f4xx_hal_msp.o"
-../Core/Src/stm32f4xx_hal_msp.c: In function 'HAL_UART_MspInit':
-../Core/Src/stm32f4xx_hal_msp.c:104:27: error: 'USART_TX_Pin' undeclared (first use in this function); did you mean 'USART_SR_PE'?
-  104 |     GPIO_InitStruct.Pin = USART_TX_Pin|USART_RX_Pin;
-      |                           ^~~~~~~~~~~~
-      |                           USART_SR_PE
-../Core/Src/stm32f4xx_hal_msp.c:104:27: note: each undeclared identifier is reported only once for each function it appears in
-../Core/Src/stm32f4xx_hal_msp.c:104:40: error: 'USART_RX_Pin' undeclared (first use in this function); did you mean 'USART_CR1_PS'?
-  104 |     GPIO_InitStruct.Pin = USART_TX_Pin|USART_RX_Pin;
-      |                                        ^~~~~~~~~~~~
-      |                                        USART_CR1_PS
-../Core/Src/stm32f4xx_hal_msp.c: In function 'HAL_UART_MspDeInit':
-../Core/Src/stm32f4xx_hal_msp.c:138:28: error: 'USART_TX_Pin' undeclared (first use in this function); did you mean 'USART_SR_PE'?
-  138 |     HAL_GPIO_DeInit(GPIOA, USART_TX_Pin|USART_RX_Pin);
-      |                            ^~~~~~~~~~~~
-      |                            USART_SR_PE
 ../Drivers/API/Src/API_uart.c: In function 'uartInit':
-../Drivers/API/Src/API_uart.c:18:9: warning: implicit declaration of function 'MX_USART2_UART_Init' [-Wimplicit-function-declaration]
-   18 |         MX_USART2_UART_Init();
-      |         ^~~~~~~~~~~~~~~~~~~
-../Core/Src/stm32f4xx_hal_msp.c:138:41: error: 'USART_RX_Pin' undeclared (first use in this function); did you mean 'USART_CR1_PS'?
-  138 |     HAL_GPIO_DeInit(GPIOA, USART_TX_Pin|USART_RX_Pin);
-      |                                         ^~~~~~~~~~~~
-      |                                         USART_CR1_PS
-../Drivers/API/Src/API_uart.c: In function 'uartSendString':
-../Drivers/API/Src/API_uart.c:29:10: warning: implicit declaration of function 'HAL_USART_Transmit'; did you mean 'HAL_UART_Transmit'? [-Wimplicit-function-declaration]
-   29 |          HAL_USART_Transmit(&huart2, pstring, strlen(pstring), UART_TIMER_MS(50));
-      |          ^~~~~~~~~~~~~~~~~~
-      |          HAL_UART_Transmit
-../Drivers/API/Src/API_uart.c:29:54: warning: pointer targets in passing argument 1 of 'strlen' differ in signedness [-Wpointer-sign]
-   29 |          HAL_USART_Transmit(&huart2, pstring, strlen(pstring), UART_TIMER_MS(50));
-      |                                                      ^~~~~~~
-      |                                                      |
-      |                                                      uint8_t * {aka unsigned char *}
-In file included from ../Drivers/API/Src/API_uart.c:9:
-/Applications/STM32CubeIDE.app/Contents/Eclipse/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.11.3.rel1.macos64_1.1.0.202305231506/tools/arm-none-eabi/include/string.h:41:18: note: expected 'const char *' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
-   41 | size_t   strlen (const char *);
-      |                  ^~~~~~~~~~~~
-make: *** [Core/Src/subdir.mk:34: Core/Src/stm32f4xx_hal_msp.o] Error 1
-make: *** Waiting for unfinished jobs....
-../Drivers/API/Src/API_uart.c: In function 'uartReceiveStringSize':
-../Drivers/API/Src/API_uart.c:41:9: warning: implicit declaration of function 'HAL_USART_Receive'; did you mean 'HAL_UART_Receive'? [-Wimplicit-function-declaration]
-   41 |         HAL_USART_Receive(&huart2, pstring, size, UART_TIMER_MS(50));
-      |         ^~~~~~~~~~~~~~~~~
-      |         HAL_UART_Receive
-../Drivers/API/Src/API_uart.c: At top level:
-../Drivers/API/Src/API_uart.c:47:12: error: static declaration of 'MX_USART2_UART_Init' follows non-static declaration
-   47 | static int MX_USART2_UART_Init(void)
-      |            ^~~~~~~~~~~~~~~~~~~
-../Drivers/API/Src/API_uart.c:18:9: note: previous implicit declaration of 'MX_USART2_UART_Init' with type 'int()'
-   18 |         MX_USART2_UART_Init();
-      |         ^~~~~~~~~~~~~~~~~~~
-../Drivers/API/Src/API_uart.c: In function 'MX_USART2_UART_Init':
-../Drivers/API/Src/API_uart.c:62:1: warning: no return statement in function returning non-void [-Wreturn-type]
-   62 | }
-      | ^
-At top level:
-../Drivers/API/Src/API_uart.c:47:12: warning: 'MX_USART2_UART_Init' defined but not used [-Wunused-function]
-   47 | static int MX_USART2_UART_Init(void)
-      |            ^~~~~~~~~~~~~~~~~~~
-make: *** [Drivers/API/Src/subdir.mk:28: Drivers/API/Src/API_uart.o] Error 1
-"make -j9 all" terminated with exit code 2. Build might be incomplete.
+../Drivers/API/Src/API_uart.c:27:36: warning: passing argument 1 of 'uartSendStringSize' from incompatible pointer type [-Wincompatible-pointer-types]
+   27 |                 uartSendStringSize(&huart2.Init.BaudRate ,size);
+      |                                    ^~~~~~~~~~~~~~~~~~~~~
+      |                                    |
+      |                                    uint32_t * {aka long unsigned int *}
+In file included from ../Drivers/API/Src/API_uart.c:8:
+/Users/santiagobualo/Documents/SBualo-CESE/Programación de Microcontroladores/Practica-5/Drivers/API/Inc/API_uart.h:23:35: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'uint32_t *' {aka 'long unsigned int *'}
+   23 | void uartSendStringSize(uint8_t * pstring, uint16_t size);
+      |                         ~~~~~~~~~~^~~~~~~
+../Drivers/API/Src/API_uart.c:28:36: warning: passing argument 1 of 'uartSendStringSize' makes pointer from integer without a cast [-Wint-conversion]
+   28 |                 uartSendStringSize((uint8_t)huart2.Init.WordLength,size);
+      |                                    ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                                    |
+      |                                    unsigned char
+In file included from ../Drivers/API/Src/API_uart.c:8:
+/Users/santiagobualo/Documents/SBualo-CESE/Programación de Microcontroladores/Practica-5/Drivers/API/Inc/API_uart.h:23:35: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'unsigned char'
+   23 | void uartSendStringSize(uint8_t * pstring, uint16_t size);
+      |                         ~~~~~~~~~~^~~~~~~
+../Drivers/API/Src/API_uart.c:29:36: warning: passing argument 1 of 'uartSendStringSize' makes pointer from integer without a cast [-Wint-conversion]
+   29 |                 uartSendStringSize((uint8_t)huart2.Init.StopBits,size);
+      |                                    ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                                    |
+      |                                    unsigned char
+In file included from ../Drivers/API/Src/API_uart.c:8:
+/Users/santiagobualo/Documents/SBualo-CESE/Programación de Microcontroladores/Practica-5/Drivers/API/Inc/API_uart.h:23:35: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'unsigned char'
+   23 | void uartSendStringSize(uint8_t * pstring, uint16_t size);
+      |                         ~~~~~~~~~~^~~~~~~
+../Drivers/API/Src/API_uart.c:30:36: warning: passing argument 1 of 'uartSendStringSize' makes pointer from integer without a cast [-Wint-conversion]
+   30 |                 uartSendStringSize((uint8_t)huart2.Init.Parity,size);
+      |                                    ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                                    |
+      |                                    unsigned char
+In file included from ../Drivers/API/Src/API_uart.c:8:
+/Users/santiagobualo/Documents/SBualo-CESE/Programación de Microcontroladores/Practica-5/Drivers/API/Inc/API_uart.h:23:35: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'unsigned char'
+   23 | void uartSendStringSize(uint8_t * pstring, uint16_t size);
+      |                         ~~~~~~~~~~^~~~~~~
+../Drivers/API/Src/API_uart.c:31:36: warning: passing argument 1 of 'uartSendStringSize' makes pointer from integer without a cast [-Wint-conversion]
+   31 |                 uartSendStringSize((uint8_t)huart2.Init.Mode,size);
+      |                                    ^~~~~~~~~~~~~~~~~~~~~~~~~
+      |                                    |
+      |                                    unsigned char
+In file included from ../Drivers/API/Src/API_uart.c:8:
+/Users/santiagobualo/Documents/SBualo-CESE/Programación de Microcontroladores/Practica-5/Drivers/API/Inc/API_uart.h:23:35: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'unsigned char'
+   23 | void uartSendStringSize(uint8_t * pstring, uint16_t size);
+      |                         ~~~~~~~~~~^~~~~~~
+../Drivers/API/Src/API_uart.c:32:36: warning: passing argument 1 of 'uartSendStringSize' makes pointer from integer without a cast [-Wint-conversion]
+   32 |                 uartSendStringSize((uint8_t)huart2.Init.HwFlowCtl,size);
+      |                                    ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                                    |
+      |                                    unsigned char
+In file included from ../Drivers/API/Src/API_uart.c:8:
+/Users/santiagobualo/Documents/SBualo-CESE/Programación de Microcontroladores/Practica-5/Drivers/API/Inc/API_uart.h:23:35: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'unsigned char'
+   23 | void uartSendStringSize(uint8_t * pstring, uint16_t size);
+      |                         ~~~~~~~~~~^~~~~~~
+../Drivers/API/Src/API_uart.c:33:36: warning: passing argument 1 of 'uartSendStringSize' makes pointer from integer without a cast [-Wint-conversion]
+   33 |                 uartSendStringSize((uint8_t)huart2.Init.OverSampling ,size);
+      |                                    ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                                    |
+      |                                    unsigned char
+In file included from ../Drivers/API/Src/API_uart.c:8:
+/Users/santiagobualo/Documents/SBualo-CESE/Programación de Microcontroladores/Practica-5/Drivers/API/Inc/API_uart.h:23:35: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'unsigned char'
+   23 | void uartSendStringSize(uint8_t * pstring, uint16_t size);
+      |                         ~~~~~~~~~~^~~~~~~
+arm-none-eabi-gcc -o "Practica-5.elf" @"objects.list"   -mcpu=cortex-m4 -T"/Users/santiagobualo/Documents/SBualo-CESE/Programación de Microcontroladores/Practica-5/STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Practica-5.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Practica-5.elf
+ 
+arm-none-eabi-size   Practica-5.elf 
+arm-none-eabi-objdump -h -S  Practica-5.elf  > "Practica-5.list"
+   text	   data	    bss	    dec	    hex	filename
+   6436	     24	   1592	   8052	   1f74	Practica-5.elf
+Finished building: default.size.stdout
+ 
+Finished building: Practica-5.list
+ 

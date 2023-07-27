@@ -1,78 +1,43 @@
-19:59:54 **** Incremental Build of configuration Debug for project Practica-5 ****
+20:41:27 **** Incremental Build of configuration Debug for project Practica-5 ****
 make -j9 all 
 arm-none-eabi-gcc "../Drivers/API/Src/API_uart.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"/Users/santiagobualo/Documents/SBualo-CESE/Programación de Microcontroladores/Practica-5/Drivers/API/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/API/Src/API_uart.d" -MT"Drivers/API/Src/API_uart.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/API/Src/API_uart.o"
 ../Drivers/API/Src/API_uart.c: In function 'uartInit':
-../Drivers/API/Src/API_uart.c:27:36: warning: passing argument 1 of 'uartSendStringSize' from incompatible pointer type [-Wincompatible-pointer-types]
-   27 |                 uartSendStringSize(&huart2.Init.BaudRate ,size);
-      |                                    ^~~~~~~~~~~~~~~~~~~~~
-      |                                    |
-      |                                    uint32_t * {aka long unsigned int *}
+../Drivers/API/Src/API_uart.c:25:32: warning: pointer targets in passing argument 1 of 'uartSendString' differ in signedness [-Wpointer-sign]
+   25 |                 uartSendString("\033[2J");
+      |                                ^~~~~~~~~
+      |                                |
+      |                                char *
 In file included from ../Drivers/API/Src/API_uart.c:8:
-/Users/santiagobualo/Documents/SBualo-CESE/Programación de Microcontroladores/Practica-5/Drivers/API/Inc/API_uart.h:23:35: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'uint32_t *' {aka 'long unsigned int *'}
-   23 | void uartSendStringSize(uint8_t * pstring, uint16_t size);
-      |                         ~~~~~~~~~~^~~~~~~
-../Drivers/API/Src/API_uart.c:28:36: warning: passing argument 1 of 'uartSendStringSize' makes pointer from integer without a cast [-Wint-conversion]
-   28 |                 uartSendStringSize((uint8_t)huart2.Init.WordLength,size);
-      |                                    ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-      |                                    |
-      |                                    unsigned char
+/Users/santiagobualo/Documents/SBualo-CESE/Programación de Microcontroladores/Practica-5/Drivers/API/Inc/API_uart.h:22:31: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'char *'
+   22 | void uartSendString(uint8_t * pstring);
+      |                     ~~~~~~~~~~^~~~~~~
+../Drivers/API/Src/API_uart.c:29:32: warning: pointer targets in passing argument 1 of 'uartSendString' differ in signedness [-Wpointer-sign]
+   29 |                 uartSendString(baudrate);
+      |                                ^~~~~~~~
+      |                                |
+      |                                char *
 In file included from ../Drivers/API/Src/API_uart.c:8:
-/Users/santiagobualo/Documents/SBualo-CESE/Programación de Microcontroladores/Practica-5/Drivers/API/Inc/API_uart.h:23:35: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'unsigned char'
-   23 | void uartSendStringSize(uint8_t * pstring, uint16_t size);
-      |                         ~~~~~~~~~~^~~~~~~
-../Drivers/API/Src/API_uart.c:29:36: warning: passing argument 1 of 'uartSendStringSize' makes pointer from integer without a cast [-Wint-conversion]
-   29 |                 uartSendStringSize((uint8_t)huart2.Init.StopBits,size);
-      |                                    ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-      |                                    |
-      |                                    unsigned char
-In file included from ../Drivers/API/Src/API_uart.c:8:
-/Users/santiagobualo/Documents/SBualo-CESE/Programación de Microcontroladores/Practica-5/Drivers/API/Inc/API_uart.h:23:35: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'unsigned char'
-   23 | void uartSendStringSize(uint8_t * pstring, uint16_t size);
-      |                         ~~~~~~~~~~^~~~~~~
-../Drivers/API/Src/API_uart.c:30:36: warning: passing argument 1 of 'uartSendStringSize' makes pointer from integer without a cast [-Wint-conversion]
-   30 |                 uartSendStringSize((uint8_t)huart2.Init.Parity,size);
-      |                                    ^~~~~~~~~~~~~~~~~~~~~~~~~~~
-      |                                    |
-      |                                    unsigned char
-In file included from ../Drivers/API/Src/API_uart.c:8:
-/Users/santiagobualo/Documents/SBualo-CESE/Programación de Microcontroladores/Practica-5/Drivers/API/Inc/API_uart.h:23:35: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'unsigned char'
-   23 | void uartSendStringSize(uint8_t * pstring, uint16_t size);
-      |                         ~~~~~~~~~~^~~~~~~
-../Drivers/API/Src/API_uart.c:31:36: warning: passing argument 1 of 'uartSendStringSize' makes pointer from integer without a cast [-Wint-conversion]
-   31 |                 uartSendStringSize((uint8_t)huart2.Init.Mode,size);
-      |                                    ^~~~~~~~~~~~~~~~~~~~~~~~~
-      |                                    |
-      |                                    unsigned char
-In file included from ../Drivers/API/Src/API_uart.c:8:
-/Users/santiagobualo/Documents/SBualo-CESE/Programación de Microcontroladores/Practica-5/Drivers/API/Inc/API_uart.h:23:35: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'unsigned char'
-   23 | void uartSendStringSize(uint8_t * pstring, uint16_t size);
-      |                         ~~~~~~~~~~^~~~~~~
-../Drivers/API/Src/API_uart.c:32:36: warning: passing argument 1 of 'uartSendStringSize' makes pointer from integer without a cast [-Wint-conversion]
-   32 |                 uartSendStringSize((uint8_t)huart2.Init.HwFlowCtl,size);
-      |                                    ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-      |                                    |
-      |                                    unsigned char
-In file included from ../Drivers/API/Src/API_uart.c:8:
-/Users/santiagobualo/Documents/SBualo-CESE/Programación de Microcontroladores/Practica-5/Drivers/API/Inc/API_uart.h:23:35: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'unsigned char'
-   23 | void uartSendStringSize(uint8_t * pstring, uint16_t size);
-      |                         ~~~~~~~~~~^~~~~~~
-../Drivers/API/Src/API_uart.c:33:36: warning: passing argument 1 of 'uartSendStringSize' makes pointer from integer without a cast [-Wint-conversion]
-   33 |                 uartSendStringSize((uint8_t)huart2.Init.OverSampling ,size);
-      |                                    ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-      |                                    |
-      |                                    unsigned char
-In file included from ../Drivers/API/Src/API_uart.c:8:
-/Users/santiagobualo/Documents/SBualo-CESE/Programación de Microcontroladores/Practica-5/Drivers/API/Inc/API_uart.h:23:35: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'unsigned char'
-   23 | void uartSendStringSize(uint8_t * pstring, uint16_t size);
-      |                         ~~~~~~~~~~^~~~~~~
+/Users/santiagobualo/Documents/SBualo-CESE/Programación de Microcontroladores/Practica-5/Drivers/API/Inc/API_uart.h:22:31: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'char *'
+   22 | void uartSendString(uint8_t * pstring);
+      |                     ~~~~~~~~~~^~~~~~~
+../Drivers/API/Src/API_uart.c:27:26: warning: unused variable 'size' [-Wunused-variable]
+   27 |                 uint16_t size = sizeof(uint8_t);
+      |                          ^~~~
 arm-none-eabi-gcc -o "Practica-5.elf" @"objects.list"   -mcpu=cortex-m4 -T"/Users/santiagobualo/Documents/SBualo-CESE/Programación de Microcontroladores/Practica-5/STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Practica-5.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 Finished building target: Practica-5.elf
  
 arm-none-eabi-size   Practica-5.elf 
 arm-none-eabi-objdump -h -S  Practica-5.elf  > "Practica-5.list"
    text	   data	    bss	    dec	    hex	filename
-   6436	     24	   1592	   8052	   1f74	Practica-5.elf
+   8868	     24	   1664	  10556	   293c	Practica-5.elf
 Finished building: default.size.stdout
  
 Finished building: Practica-5.list
+ 
+20:41:41 **** Incremental Build of configuration Debug for project Practica-5 ****
+make -j9 all 
+arm-none-eabi-size   Practica-5.elf 
+   text	   data	    bss	    dec	    hex	filename
+   8868	     24	   1664	  10556	   293c	Practica-5.elf
+Finished building: default.size.stdout
  

@@ -22,15 +22,11 @@ bool uartInit(void){
 	MX_USART2_UART_Init();
 	if (HAL_UART_Init(&huart2) == HAL_OK)
 	  {
+		uartSendString("\033[2J");
 		//UART PRINT VARIABLES de CONFIGURACION
 		uint16_t size = sizeof(uint8_t);
-		uartSendStringSize(&huart2.Init.BaudRate ,size);
-		uartSendStringSize((uint8_t)huart2.Init.WordLength,size);
-		uartSendStringSize((uint8_t)huart2.Init.StopBits,size);
-		uartSendStringSize((uint8_t)huart2.Init.Parity,size);
-		uartSendStringSize((uint8_t)huart2.Init.Mode,size);
-		uartSendStringSize((uint8_t)huart2.Init.HwFlowCtl,size);
-		uartSendStringSize((uint8_t)huart2.Init.OverSampling ,size);
+		char* baudrate = "115200";
+		uartSendString(baudrate);
 
 		CorrectInicialization=true;
 	  }
@@ -69,7 +65,7 @@ static void MX_USART2_UART_Init(void)
 
 
   huart2.Instance = USART2;
-  huart2.Init.BaudRate = UART_BAUDRATE;
+  huart2.Init.BaudRate = 115200;
   huart2.Init.WordLength = UART_WORDLENGTH_8B;
   huart2.Init.StopBits = UART_STOPBITS_1;
   huart2.Init.Parity = UART_PARITY_NONE;

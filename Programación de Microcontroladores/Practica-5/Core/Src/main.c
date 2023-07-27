@@ -21,6 +21,7 @@
 #include "FSM.h"
 #include "Led.h"
 #include "API_delay.h"
+#include "API_uart.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
@@ -91,7 +92,7 @@ int main(void)
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
   //MX_USART2_UART_Init();
-
+  bool init = uartInit();
 
   /* USER CODE BEGIN 2 */
   debounceFSM_init();

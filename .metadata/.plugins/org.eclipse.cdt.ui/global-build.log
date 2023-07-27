@@ -1,55 +1,65 @@
-17:01:25 **** Incremental Build of configuration Debug for project Practica-4-Ej2 ****
+19:36:14 **** Incremental Build of configuration Debug for project Practica-5 ****
 make -j9 all 
-arm-none-eabi-gcc "../Drivers/API/Src/FSM.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"/Users/santiagobualo/Documents/SBualo-CESE/Programación de Microcontroladores/Practica4-Ej2/Drivers/API/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/API/Src/FSM.d" -MT"Drivers/API/Src/FSM.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/API/Src/FSM.o"
-../Drivers/API/Src/FSM.c: In function 'debounceFSM_timer_update':
-../Drivers/API/Src/FSM.c:31:9: warning: enumeration value 'BUTTON_UP' not handled in switch [-Wswitch]
-   31 |         switch(FSMPointer){
-      |         ^~~~~~
-../Drivers/API/Src/FSM.c:31:9: warning: enumeration value 'BUTTON_DOWN' not handled in switch [-Wswitch]
-../Drivers/API/Src/FSM.c: In function 'debounceFSM_button_update':
-../Drivers/API/Src/FSM.c:63:9: warning: enumeration value 'BUTTON_FALLING' not handled in switch [-Wswitch]
-   63 |         switch (*myFSM) {
-      |         ^~~~~~
-../Drivers/API/Src/FSM.c:63:9: warning: enumeration value 'BUTTON_RAISING' not handled in switch [-Wswitch]
-arm-none-eabi-gcc -o "Practica-4-Ej2.elf" @"objects.list"   -mcpu=cortex-m4 -T"/Users/santiagobualo/Documents/SBualo-CESE/Programación de Microcontroladores/Practica4-Ej2/STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Practica-4-Ej2.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: Practica-4-Ej2.elf
- 
-arm-none-eabi-size   Practica-4-Ej2.elf 
-arm-none-eabi-objdump -h -S  Practica-4-Ej2.elf  > "Practica-4-Ej2.list"
-   text	   data	    bss	    dec	    hex	filename
-   8444	     24	   1664	  10132	   2794	Practica-4-Ej2.elf
-Finished building: default.size.stdout
- 
-Finished building: Practica-4-Ej2.list
- 
-17:01:54 **** Incremental Build of configuration Debug for project Practica-4-Ej2 ****
-make -j9 all 
-arm-none-eabi-size   Practica-4-Ej2.elf 
-   text	   data	    bss	    dec	    hex	filename
-   8444	     24	   1664	  10132	   2794	Practica-4-Ej2.elf
-Finished building: default.size.stdout
- 
-17:07:13 **** Incremental Build of configuration Debug for project Practica-4-Ej2 ****
-make -j9 all 
-arm-none-eabi-gcc "../Drivers/API/Src/FSM.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"/Users/santiagobualo/Documents/SBualo-CESE/Programación de Microcontroladores/Practica4-Ej2/Drivers/API/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/API/Src/FSM.d" -MT"Drivers/API/Src/FSM.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/API/Src/FSM.o"
-../Drivers/API/Src/FSM.c: In function 'debounceFSM_timer_update':
-../Drivers/API/Src/FSM.c:31:9: warning: enumeration value 'BUTTON_UP' not handled in switch [-Wswitch]
-   31 |         switch(FSMPointer){
-      |         ^~~~~~
-../Drivers/API/Src/FSM.c:31:9: warning: enumeration value 'BUTTON_DOWN' not handled in switch [-Wswitch]
-../Drivers/API/Src/FSM.c: In function 'debounceFSM_button_update':
-../Drivers/API/Src/FSM.c:63:9: warning: enumeration value 'BUTTON_FALLING' not handled in switch [-Wswitch]
-   63 |         switch (*myFSM) {
-      |         ^~~~~~
-../Drivers/API/Src/FSM.c:63:9: warning: enumeration value 'BUTTON_RAISING' not handled in switch [-Wswitch]
-arm-none-eabi-gcc -o "Practica-4-Ej2.elf" @"objects.list"   -mcpu=cortex-m4 -T"/Users/santiagobualo/Documents/SBualo-CESE/Programación de Microcontroladores/Practica4-Ej2/STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Practica-4-Ej2.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: Practica-4-Ej2.elf
- 
-arm-none-eabi-size   Practica-4-Ej2.elf 
-arm-none-eabi-objdump -h -S  Practica-4-Ej2.elf  > "Practica-4-Ej2.list"
-   text	   data	    bss	    dec	    hex	filename
-   8408	     24	   1664	  10096	   2770	Practica-4-Ej2.elf
-Finished building: default.size.stdout
- 
-Finished building: Practica-4-Ej2.list
- 
+arm-none-eabi-gcc "../Drivers/API/Src/API_uart.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"/Users/santiagobualo/Documents/SBualo-CESE/Programación de Microcontroladores/Practica-5/Drivers/API/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/API/Src/API_uart.d" -MT"Drivers/API/Src/API_uart.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/API/Src/API_uart.o"
+arm-none-eabi-gcc "../Core/Src/stm32f4xx_hal_msp.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"/Users/santiagobualo/Documents/SBualo-CESE/Programación de Microcontroladores/Practica-5/Drivers/API/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/stm32f4xx_hal_msp.d" -MT"Core/Src/stm32f4xx_hal_msp.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/stm32f4xx_hal_msp.o"
+../Core/Src/stm32f4xx_hal_msp.c: In function 'HAL_UART_MspInit':
+../Core/Src/stm32f4xx_hal_msp.c:104:27: error: 'USART_TX_Pin' undeclared (first use in this function); did you mean 'USART_SR_PE'?
+  104 |     GPIO_InitStruct.Pin = USART_TX_Pin|USART_RX_Pin;
+      |                           ^~~~~~~~~~~~
+      |                           USART_SR_PE
+../Core/Src/stm32f4xx_hal_msp.c:104:27: note: each undeclared identifier is reported only once for each function it appears in
+../Core/Src/stm32f4xx_hal_msp.c:104:40: error: 'USART_RX_Pin' undeclared (first use in this function); did you mean 'USART_CR1_PS'?
+  104 |     GPIO_InitStruct.Pin = USART_TX_Pin|USART_RX_Pin;
+      |                                        ^~~~~~~~~~~~
+      |                                        USART_CR1_PS
+../Core/Src/stm32f4xx_hal_msp.c: In function 'HAL_UART_MspDeInit':
+../Core/Src/stm32f4xx_hal_msp.c:138:28: error: 'USART_TX_Pin' undeclared (first use in this function); did you mean 'USART_SR_PE'?
+  138 |     HAL_GPIO_DeInit(GPIOA, USART_TX_Pin|USART_RX_Pin);
+      |                            ^~~~~~~~~~~~
+      |                            USART_SR_PE
+../Drivers/API/Src/API_uart.c: In function 'uartInit':
+../Drivers/API/Src/API_uart.c:18:9: warning: implicit declaration of function 'MX_USART2_UART_Init' [-Wimplicit-function-declaration]
+   18 |         MX_USART2_UART_Init();
+      |         ^~~~~~~~~~~~~~~~~~~
+../Core/Src/stm32f4xx_hal_msp.c:138:41: error: 'USART_RX_Pin' undeclared (first use in this function); did you mean 'USART_CR1_PS'?
+  138 |     HAL_GPIO_DeInit(GPIOA, USART_TX_Pin|USART_RX_Pin);
+      |                                         ^~~~~~~~~~~~
+      |                                         USART_CR1_PS
+../Drivers/API/Src/API_uart.c: In function 'uartSendString':
+../Drivers/API/Src/API_uart.c:29:10: warning: implicit declaration of function 'HAL_USART_Transmit'; did you mean 'HAL_UART_Transmit'? [-Wimplicit-function-declaration]
+   29 |          HAL_USART_Transmit(&huart2, pstring, strlen(pstring), UART_TIMER_MS(50));
+      |          ^~~~~~~~~~~~~~~~~~
+      |          HAL_UART_Transmit
+../Drivers/API/Src/API_uart.c:29:54: warning: pointer targets in passing argument 1 of 'strlen' differ in signedness [-Wpointer-sign]
+   29 |          HAL_USART_Transmit(&huart2, pstring, strlen(pstring), UART_TIMER_MS(50));
+      |                                                      ^~~~~~~
+      |                                                      |
+      |                                                      uint8_t * {aka unsigned char *}
+In file included from ../Drivers/API/Src/API_uart.c:9:
+/Applications/STM32CubeIDE.app/Contents/Eclipse/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.11.3.rel1.macos64_1.1.0.202305231506/tools/arm-none-eabi/include/string.h:41:18: note: expected 'const char *' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+   41 | size_t   strlen (const char *);
+      |                  ^~~~~~~~~~~~
+make: *** [Core/Src/subdir.mk:34: Core/Src/stm32f4xx_hal_msp.o] Error 1
+make: *** Waiting for unfinished jobs....
+../Drivers/API/Src/API_uart.c: In function 'uartReceiveStringSize':
+../Drivers/API/Src/API_uart.c:41:9: warning: implicit declaration of function 'HAL_USART_Receive'; did you mean 'HAL_UART_Receive'? [-Wimplicit-function-declaration]
+   41 |         HAL_USART_Receive(&huart2, pstring, size, UART_TIMER_MS(50));
+      |         ^~~~~~~~~~~~~~~~~
+      |         HAL_UART_Receive
+../Drivers/API/Src/API_uart.c: At top level:
+../Drivers/API/Src/API_uart.c:47:12: error: static declaration of 'MX_USART2_UART_Init' follows non-static declaration
+   47 | static int MX_USART2_UART_Init(void)
+      |            ^~~~~~~~~~~~~~~~~~~
+../Drivers/API/Src/API_uart.c:18:9: note: previous implicit declaration of 'MX_USART2_UART_Init' with type 'int()'
+   18 |         MX_USART2_UART_Init();
+      |         ^~~~~~~~~~~~~~~~~~~
+../Drivers/API/Src/API_uart.c: In function 'MX_USART2_UART_Init':
+../Drivers/API/Src/API_uart.c:62:1: warning: no return statement in function returning non-void [-Wreturn-type]
+   62 | }
+      | ^
+At top level:
+../Drivers/API/Src/API_uart.c:47:12: warning: 'MX_USART2_UART_Init' defined but not used [-Wunused-function]
+   47 | static int MX_USART2_UART_Init(void)
+      |            ^~~~~~~~~~~~~~~~~~~
+make: *** [Drivers/API/Src/subdir.mk:28: Drivers/API/Src/API_uart.o] Error 1
+"make -j9 all" terminated with exit code 2. Build might be incomplete.

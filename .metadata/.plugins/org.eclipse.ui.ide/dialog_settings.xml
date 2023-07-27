@@ -9,6 +9,8 @@
 		<item key="SmartImportRootWizardPage.STORE_NESTED_PROJECTS" value="true"/>
 		<item key="SmartImportRootWizardPage.STORE_CONFIGURE_NATURES" value="true"/>
 		<list key="org.eclipse.ui.internal.wizards.datatransfer.SmartImportRootWizardPage.knownSources">
+			<item value="/Users/santiagobualo/Library/CloudStorage/OneDrive-Personal/Documentos/Maestria/Programacion Micros/Revisiones/CESE_PDM-master/TP4/TP4"/>
+			<item value="/Users/santiagobualo/Library/CloudStorage/OneDrive-Personal/Documentos/Maestria/Programacion Micros/Revisiones/CESE_PDM-master/TP4/TP_PT2"/>
 			<item value="/Users/santiagobualo/Documents/SBualo-CESE/Programación de Microcontroladores"/>
 		</list>
 	</section>

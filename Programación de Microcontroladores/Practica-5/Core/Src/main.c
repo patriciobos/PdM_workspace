@@ -21,7 +21,6 @@
 #include "FSM.h"
 #include "Led.h"
 #include "API_delay.h"
-#include "API_uart.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
@@ -45,7 +44,6 @@
 
 /* Private variables ---------------------------------------------------------*/
 
-
 /* USER CODE BEGIN PV */
 
 /* USER CODE END PV */
@@ -53,7 +51,6 @@
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
-static void MX_USART2_UART_Init(void);
 /* USER CODE BEGIN PFP */
 
 /* USER CODE END PFP */
@@ -93,6 +90,7 @@ int main(void)
   MX_GPIO_Init();
   //MX_USART2_UART_Init();
   bool init = uartInit();
+
 
   /* USER CODE BEGIN 2 */
   debounceFSM_init();
@@ -156,12 +154,6 @@ void SystemClock_Config(void)
     Error_Handler();
   }
 }
-
-/**
-  * @brief USART2 Initialization Function
-  * @param None
-  * @retval None
-  */
 
 
 /**

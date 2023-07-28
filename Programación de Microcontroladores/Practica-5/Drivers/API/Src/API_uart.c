@@ -22,7 +22,9 @@ bool uartInit(void){
 	MX_USART2_UART_Init();
 	if (HAL_UART_Init(&huart2) == HAL_OK)
 	  {
-		uartSendString("\033[2J");
+		uartSendString("\033[2J\r");
+
+		uartSendString("UART INICIALIZADA CORRECTAMENTE \r\n");
 		//UART PRINT VARIABLES de CONFIGURACION
 		uint16_t size = sizeof(uint8_t);
 		char* baudrate = "115200";
@@ -36,7 +38,6 @@ bool uartInit(void){
 void uartSendString(uint8_t * pstring){
 
 	 int length = 0;
-
 	  // Loop through the array, counting the number of bytes before the terminating null character.
 	  while (pstring[length] != '\0') {
 	    length++;
@@ -63,7 +64,6 @@ void uartReceiveStringSize(uint8_t * pstring, uint16_t size){
 static void MX_USART2_UART_Init(void)
 {
 
-
   huart2.Instance = USART2;
   huart2.Init.BaudRate = 115200;
   huart2.Init.WordLength = UART_WORDLENGTH_8B;
@@ -72,7 +72,5 @@ static void MX_USART2_UART_Init(void)
   huart2.Init.Mode = UART_MODE_TX_RX;
   huart2.Init.HwFlowCtl = UART_HWCONTROL_NONE;
   huart2.Init.OverSampling = UART_OVERSAMPLING_16;
-
-
 
 }

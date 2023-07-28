@@ -7,6 +7,7 @@
 
 #include "FSM.h"
 #include "API_delay.h"
+#include "API_uart.h"
 #include "Led.h"
 
 
@@ -33,6 +34,7 @@ void debounceFSM_timer_update(void){
 
 				if (ButtonPressOcurred){  //Vuelvo a ver el estado del boton, si es igual -> avanzo
 					FSMPointer = BUTTON_DOWN;
+					uartSendString("Flanco Descendente\r\n");
 					buttonPressed();
 
 				}else {
@@ -44,6 +46,7 @@ void debounceFSM_timer_update(void){
 		case BUTTON_RAISING: {
 				if (!ButtonPressOcurred){ //Vuelvo a ver el estado del boton, si es igual -> avanzo
 					FSMPointer = BUTTON_UP;
+					uartSendString("Flanco Ascendente\r\n");
 					buttonReleased();
 						}else {
 							FSMPointer = BUTTON_DOWN;

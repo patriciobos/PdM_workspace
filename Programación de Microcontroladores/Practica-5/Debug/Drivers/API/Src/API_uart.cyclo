@@ -1,0 +1,5 @@
+../Drivers/API/Src/API_uart.c:19:6:uartInit	2
+../Drivers/API/Src/API_uart.c:38:6:uartSendString	2
+../Drivers/API/Src/API_uart.c:52:6:uartSendStringSize	1
+../Drivers/API/Src/API_uart.c:57:6:uartReceiveStringSize	1
+../Drivers/API/Src/API_uart.c:65:13:MX_USART2_UART_Init	1

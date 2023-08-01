@@ -1,0 +1,7 @@
+../Drivers/API/Src/Led.c:46:6:LED_PLACA_init	1
+../Drivers/API/Src/Led.c:52:6:LED_TURN_ON	1
+../Drivers/API/Src/Led.c:56:6:LED_TURN_OFF	1
+../Drivers/API/Src/Led.c:59:6:LED_TOGGLE	1
+../Drivers/API/Src/Led.c:77:6:LED1_function	1
+../Drivers/API/Src/Led.c:88:6:LED2_function	1
+../Drivers/API/Src/Led.c:96:6:LED3_function	2

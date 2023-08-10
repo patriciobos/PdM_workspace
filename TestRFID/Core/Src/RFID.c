@@ -30,14 +30,16 @@ bool rc522_request(uint8_t reqMode, uint8_t *tagType);
 bool rc522_antiColl(uint8_t* serNum);
 
 
-
 uint8_t rc522_regRead8(uint8_t reg)
 {
-
+	uint8_t dataRd=0;
   reg = ((reg << 1) & 0x7E) | 0x80;
-  SPI_Transmit_Blocking(&reg,1);
-  uint8_t dataRd=0;
-  SPI_Receive_Blocking(&dataRd, 1);//Espero el dato
+  SPI_CS_Enable(SPI_TRANSMIT_INIT);
+  //SPI_Transmit_Blocking(&reg,1,false);
+  RC522_SPI_Transfer(reg);
+  dataRd = RC522_SPI_Transfer(0x00);
+  SPI_CS_Enable(SPI_TRANSMIT_END);
+  //SPI_Receive_Blocking(&dataRd, 1,true);//Espero el dato
   return dataRd;
 }
 
@@ -46,9 +48,16 @@ uint8_t rc522_regRead8(uint8_t reg)
  */
 void rc522_regWrite8(uint8_t reg, uint8_t data8)
 {
-  uint8_t txData[2] = {0x7E&(reg << 1), data8};
-  SPI_Transmit_Blocking(txData,2);
+//  uint8_t txData[2] = {0x7E&(reg << 1), data8};
+//  SPI_Transmit_Blocking(txData,2,true);
 
+
+  SPI_CS_Enable(SPI_TRANSMIT_INIT);
+  	//The address is located:0XXXXXX0
+  	RC522_SPI_Transfer((reg<<1)&0x7E);
+  	RC522_SPI_Transfer(data8);
+
+    SPI_CS_Enable(SPI_TRANSMIT_END);
 }
 
 /**
@@ -100,7 +109,9 @@ bool rc522_checkCard(uint8_t *id)
       //Card detected
       //Anti-collision, return card serial number 4 bytes
       status = rc522_antiColl(id);
+
     }
+
     rc522_halt();      //Command card into hibernation
 
     return status;
@@ -157,18 +168,18 @@ bool rc522_toCard(
   rc522_regWrite8(MFRC522_REG_COMM_IE_N, irqEn | 0x80);
   rc522_clearBit(MFRC522_REG_COMM_IRQ, 0x80);
   rc522_setBit(MFRC522_REG_FIFO_LEVEL, 0x80);
-
   rc522_regWrite8(MFRC522_REG_COMMAND, PCD_IDLE);
-
   //Writing data to the FIFO
   for (i = 0; i < sendLen; i++) {
     rc522_regWrite8(MFRC522_REG_FIFO_DATA, sendData[i]);
+
   }
 
   //Execute the command
   rc522_regWrite8(MFRC522_REG_COMMAND, command);
   if (command == PCD_TRANSCEIVE) {
     rc522_setBit(MFRC522_REG_BIT_FRAMING, 0x80);   //StartSend=1,transmission of data starts
+
   }
 
   //Waiting to receive data to complete
@@ -177,6 +188,7 @@ bool rc522_toCard(
     //CommIrqReg[7..0]
     //Set1 TxIRq RxIRq IdleIRq HiAlerIRq LoAlertIRq ErrIRq TimerIRq
     n = rc522_regRead8(MFRC522_REG_COMM_IRQ);
+
     i--;
   } while ((i!=0) && !(n&0x01) && !(n&waitIRq));
 
@@ -191,7 +203,6 @@ bool rc522_toCard(
 
       if (command == PCD_TRANSCEIVE) {
         n = rc522_regRead8(MFRC522_REG_FIFO_LEVEL);
-        uint8_t l = n;
         lastBits = rc522_regRead8(MFRC522_REG_CONTROL) & 0x07;
         if (lastBits) {
           *backLen = (n - 1) * 8 + lastBits;
@@ -209,16 +220,14 @@ bool rc522_toCard(
         //Reading the received data in FIFO
         for (i = 0; i < n; i++) {
           uint8_t d = rc522_regRead8(MFRC522_REG_FIFO_DATA);
-          if (l == 4)
-            printf("%02x ", d);
+
           backData[i] = d;
         }
-        if (l==4)
-          printf("\r\n");
+
         return status;
       }
     } else {
-      printf("error\r\n");
+
       status = false;
     }
   }

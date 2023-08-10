@@ -50,7 +50,7 @@ void SPI_Init(void)
 
 }
 
-static void SPI_CS_Enable(bool state)
+ void SPI_CS_Enable(bool state)
 {
 	if(state)
 	  {
@@ -71,12 +71,15 @@ int8_t SPI_Transmit_IT(uint8_t *data, uint32_t size)
 return 0;
 }
 
-int8_t SPI_Transmit_Blocking(uint8_t *data, uint32_t size)
+int8_t SPI_Transmit_Blocking(uint8_t *data, uint32_t size, bool endComunication)
 {
 
+
 	SPI_CS_Enable(SPI_TRANSMIT_INIT);
-	HAL_SPI_Transmit(&hspi1, data, size, 0xFFFF);
+	HAL_StatusTypeDef halstatus =  HAL_SPI_Transmit(&hspi1, data, size, 0xFF);
+	if (endComunication){
 	SPI_CS_Enable(SPI_TRANSMIT_END);
+	}
 
 return 0;
 }
@@ -92,12 +95,14 @@ int8_t SPI_Receive_IT(uint8_t *data, uint32_t size)
 	return 0;
 }
 
-int8_t SPI_Receive_Blocking(uint8_t *data, uint32_t size)
+int8_t SPI_Receive_Blocking(uint8_t *data, uint32_t size,bool endComunication)
 {
 
 	SPI_CS_Enable(SPI_TRANSMIT_INIT);
 	HAL_SPI_Receive(&hspi1, data, size, 0xFF);
-	SPI_CS_Enable(SPI_TRANSMIT_END);
+	if (endComunication){
+		SPI_CS_Enable(SPI_TRANSMIT_END);
+	}
 
 return 0;
 }
@@ -165,5 +170,21 @@ bool DataExportedSuccesfully = false;
 	}
 
 return DataExportedSuccesfully;
+}
+
+
+void SPI_Abort_Blocking(void){
+	HAL_SPI_Abort(&hspi1);
+	HAL_SPI_DeInit(&hspi1);
+	HAL_SPI_Init(&hspi1);
+	SPI_CS_Enable(SPI_TRANSMIT_END);
+}
+
+uint8_t RC522_SPI_Transfer(uint8_t data)
+{
+	uint8_t rx_data;
+	HAL_SPI_TransmitReceive(&hspi1,&data,&rx_data,1,100);
+
+	return rx_data;
 }
 

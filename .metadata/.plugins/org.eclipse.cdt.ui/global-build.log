@@ -1,147 +1,57 @@
-19:36:03 **** Incremental Build of configuration Debug for project TestRFID ****
+18:12:14 **** Incremental Build of configuration Debug for project RFID_v2 ****
 make -j9 all 
-arm-none-eabi-gcc "../Core/Src/RFID.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/RFID.d" -MT"Core/Src/RFID.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/RFID.o"
-In file included from ../Core/Src/RFID.c:2:
-../Core/Inc/spi.h:45:13: warning: 'SPI_CS_Enable' declared 'static' but never defined [-Wunused-function]
-   45 | static void SPI_CS_Enable(bool state);
-      |             ^~~~~~~~~~~~~
-../Core/Inc/spi.h:46:13: warning: 'SPI_Fill_Tx_Buffer' declared 'static' but never defined [-Wunused-function]
-   46 | static void SPI_Fill_Tx_Buffer(uint8_t * data,uint32_t size);
-      |             ^~~~~~~~~~~~~~~~~~
-arm-none-eabi-gcc -o "TestRFID.elf" @"objects.list"   -mcpu=cortex-m4 -T"/Users/santiagobualo/Documents/SBualo-CESE/TestRFID/STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="TestRFID.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: TestRFID.elf
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "RFID_v2.elf" @"objects.list"   -mcpu=cortex-m4 -T"/Users/santiagobualo/Documents/SBualo-CESE/RFID_v2/STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="RFID_v2.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: RFID_v2.elf
  
-arm-none-eabi-size   TestRFID.elf 
-arm-none-eabi-objdump -h -S  TestRFID.elf  > "TestRFID.list"
+arm-none-eabi-size   RFID_v2.elf 
+arm-none-eabi-objdump -h -S  RFID_v2.elf  > "RFID_v2.list"
    text	   data	    bss	    dec	    hex	filename
-  17228	    116	   2156	  19500	   4c2c	TestRFID.elf
+   9780	     40	   1704	  11524	   2d04	RFID_v2.elf
 Finished building: default.size.stdout
  
-Finished building: TestRFID.list
+Finished building: RFID_v2.list
  
-19:36:08 **** Incremental Build of configuration Debug for project TestRFID ****
+18:15:33 **** Incremental Build of configuration Debug for project RFID_v2 ****
 make -j9 all 
-arm-none-eabi-size   TestRFID.elf 
+arm-none-eabi-size   RFID_v2.elf 
    text	   data	    bss	    dec	    hex	filename
-  17228	    116	   2156	  19500	   4c2c	TestRFID.elf
+   9780	     40	   1704	  11524	   2d04	RFID_v2.elf
 Finished building: default.size.stdout
  
-19:37:13 **** Incremental Build of configuration Debug for project TestRFID ****
+18:16:47 **** Incremental Build of configuration Debug for project RFID_v2 ****
 make -j9 all 
-arm-none-eabi-gcc "../Core/Src/RFID.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/RFID.d" -MT"Core/Src/RFID.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/RFID.o"
-In file included from ../Core/Src/RFID.c:2:
-../Core/Inc/spi.h:45:13: warning: 'SPI_CS_Enable' declared 'static' but never defined [-Wunused-function]
-   45 | static void SPI_CS_Enable(bool state);
-      |             ^~~~~~~~~~~~~
-../Core/Inc/spi.h:46:13: warning: 'SPI_Fill_Tx_Buffer' declared 'static' but never defined [-Wunused-function]
-   46 | static void SPI_Fill_Tx_Buffer(uint8_t * data,uint32_t size);
-      |             ^~~~~~~~~~~~~~~~~~
-arm-none-eabi-gcc -o "TestRFID.elf" @"objects.list"   -mcpu=cortex-m4 -T"/Users/santiagobualo/Documents/SBualo-CESE/TestRFID/STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="TestRFID.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: TestRFID.elf
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "RFID_v2.elf" @"objects.list"   -mcpu=cortex-m4 -T"/Users/santiagobualo/Documents/SBualo-CESE/RFID_v2/STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="RFID_v2.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: RFID_v2.elf
  
-arm-none-eabi-size   TestRFID.elf 
-arm-none-eabi-objdump -h -S  TestRFID.elf  > "TestRFID.list"
+arm-none-eabi-size   RFID_v2.elf 
+arm-none-eabi-objdump -h -S  RFID_v2.elf  > "RFID_v2.list"
    text	   data	    bss	    dec	    hex	filename
-  17636	    112	   2088	  19836	   4d7c	TestRFID.elf
+   8808	     20	   1684	  10512	   2910	RFID_v2.elf
 Finished building: default.size.stdout
  
-Finished building: TestRFID.list
+Finished building: RFID_v2.list
  
-19:37:59 **** Incremental Build of configuration Debug for project TestRFID ****
+18:35:32 **** Incremental Build of configuration Debug for project RFID_v2 ****
 make -j9 all 
-arm-none-eabi-size   TestRFID.elf 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c:64:43: error: 'ox21' undeclared here (not in a function)
+   64 | uint8_t Key_Card2[4] = {0x92, 0x94, 0xB7, ox21};
+      |                                           ^~~~
+make: *** [Core/Src/subdir.mk:37: Core/Src/main.o] Error 1
+"make -j9 all" terminated with exit code 2. Build might be incomplete.
+18:35:46 **** Incremental Build of configuration Debug for project RFID_v2 ****
+make -j9 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "RFID_v2.elf" @"objects.list"   -mcpu=cortex-m4 -T"/Users/santiagobualo/Documents/SBualo-CESE/RFID_v2/STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="RFID_v2.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: RFID_v2.elf
+ 
+arm-none-eabi-size   RFID_v2.elf 
+arm-none-eabi-objdump -h -S  RFID_v2.elf  > "RFID_v2.list"
    text	   data	    bss	    dec	    hex	filename
-  17636	    112	   2088	  19836	   4d7c	TestRFID.elf
+   8948	     28	   1684	  10660	   29a4	RFID_v2.elf
 Finished building: default.size.stdout
  
-19:41:25 **** Incremental Build of configuration Debug for project TestRFID ****
-make -j9 all 
-arm-none-eabi-gcc "../Core/Src/spi.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/spi.d" -MT"Core/Src/spi.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/spi.o"
-arm-none-eabi-gcc -o "TestRFID.elf" @"objects.list"   -mcpu=cortex-m4 -T"/Users/santiagobualo/Documents/SBualo-CESE/TestRFID/STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="TestRFID.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: TestRFID.elf
- 
-arm-none-eabi-size   TestRFID.elf 
-arm-none-eabi-objdump -h -S  TestRFID.elf  > "TestRFID.list"
-   text	   data	    bss	    dec	    hex	filename
-  17636	    112	   2088	  19836	   4d7c	TestRFID.elf
-Finished building: default.size.stdout
- 
-Finished building: TestRFID.list
- 
-19:49:55 **** Incremental Build of configuration Debug for project TestRFID ****
-make -j9 all 
-arm-none-eabi-gcc "../Core/Src/RFID.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/RFID.d" -MT"Core/Src/RFID.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/RFID.o"
-../Core/Src/RFID.c: In function 'rc522_checkCard':
-../Core/Src/RFID.c:106:12: warning: unused variable 'd' [-Wunused-variable]
-  106 |       char d = id[3];
-      |            ^
-../Core/Src/RFID.c:105:12: warning: unused variable 'c' [-Wunused-variable]
-  105 |       char c = id[2];
-      |            ^
-../Core/Src/RFID.c:104:12: warning: unused variable 'b' [-Wunused-variable]
-  104 |       char b = id[1];
-      |            ^
-../Core/Src/RFID.c:103:12: warning: unused variable 'a' [-Wunused-variable]
-  103 |       char a = id[0];
-      |            ^
-In file included from ../Core/Src/RFID.c:2:
-../Core/Src/RFID.c: At top level:
-../Core/Inc/spi.h:45:13: warning: 'SPI_CS_Enable' declared 'static' but never defined [-Wunused-function]
-   45 | static void SPI_CS_Enable(bool state);
-      |             ^~~~~~~~~~~~~
-../Core/Inc/spi.h:46:13: warning: 'SPI_Fill_Tx_Buffer' declared 'static' but never defined [-Wunused-function]
-   46 | static void SPI_Fill_Tx_Buffer(uint8_t * data,uint32_t size);
-      |             ^~~~~~~~~~~~~~~~~~
-arm-none-eabi-gcc -o "TestRFID.elf" @"objects.list"   -mcpu=cortex-m4 -T"/Users/santiagobualo/Documents/SBualo-CESE/TestRFID/STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="TestRFID.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: TestRFID.elf
- 
-arm-none-eabi-size   TestRFID.elf 
-arm-none-eabi-objdump -h -S  TestRFID.elf  > "TestRFID.list"
-   text	   data	    bss	    dec	    hex	filename
-  17664	    112	   2088	  19864	   4d98	TestRFID.elf
-Finished building: default.size.stdout
- 
-Finished building: TestRFID.list
- 
-19:56:22 **** Incremental Build of configuration Debug for project TestRFID ****
-make -j9 all 
-arm-none-eabi-gcc "../Core/Src/RFID.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/RFID.d" -MT"Core/Src/RFID.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/RFID.o"
-In file included from ../Core/Src/RFID.c:2:
-../Core/Inc/spi.h:45:13: warning: 'SPI_CS_Enable' declared 'static' but never defined [-Wunused-function]
-   45 | static void SPI_CS_Enable(bool state);
-      |             ^~~~~~~~~~~~~
-../Core/Inc/spi.h:46:13: warning: 'SPI_Fill_Tx_Buffer' declared 'static' but never defined [-Wunused-function]
-   46 | static void SPI_Fill_Tx_Buffer(uint8_t * data,uint32_t size);
-      |             ^~~~~~~~~~~~~~~~~~
-arm-none-eabi-gcc -o "TestRFID.elf" @"objects.list"   -mcpu=cortex-m4 -T"/Users/santiagobualo/Documents/SBualo-CESE/TestRFID/STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="TestRFID.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: TestRFID.elf
- 
-arm-none-eabi-size   TestRFID.elf 
-arm-none-eabi-objdump -h -S  TestRFID.elf  > "TestRFID.list"
-   text	   data	    bss	    dec	    hex	filename
-  17432	    112	   2088	  19632	   4cb0	TestRFID.elf
-Finished building: default.size.stdout
- 
-Finished building: TestRFID.list
- 
-19:56:52 **** Incremental Build of configuration Debug for project TestRFID ****
-make -j9 all 
-arm-none-eabi-gcc "../Core/Src/RFID.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/RFID.d" -MT"Core/Src/RFID.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/RFID.o"
-In file included from ../Core/Src/RFID.c:2:
-../Core/Inc/spi.h:45:13: warning: 'SPI_CS_Enable' declared 'static' but never defined [-Wunused-function]
-   45 | static void SPI_CS_Enable(bool state);
-      |             ^~~~~~~~~~~~~
-../Core/Inc/spi.h:46:13: warning: 'SPI_Fill_Tx_Buffer' declared 'static' but never defined [-Wunused-function]
-   46 | static void SPI_Fill_Tx_Buffer(uint8_t * data,uint32_t size);
-      |             ^~~~~~~~~~~~~~~~~~
-arm-none-eabi-gcc -o "TestRFID.elf" @"objects.list"   -mcpu=cortex-m4 -T"/Users/santiagobualo/Documents/SBualo-CESE/TestRFID/STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="TestRFID.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: TestRFID.elf
- 
-arm-none-eabi-size   TestRFID.elf 
-arm-none-eabi-objdump -h -S  TestRFID.elf  > "TestRFID.list"
-   text	   data	    bss	    dec	    hex	filename
-  17636	    112	   2088	  19836	   4d7c	TestRFID.elf
-Finished building: default.size.stdout
- 
-Finished building: TestRFID.list
+Finished building: RFID_v2.list
  

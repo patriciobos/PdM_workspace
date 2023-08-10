@@ -10,24 +10,8 @@
 
 #include "RC522.h"
 
-/*
- * Ten ham:Write_MFRC5200
- * Chuc nang: wait 1 byte is stored in register MFRC522
- * Input:addr-> I just wrote down, val-> Value to record
- * Check: No
- */
-uint8_t RC522_SPI_Transfer(uint8_t data)
-{
-	uint8_t rx_data;
-	HAL_SPI_TransmitReceive(&hspi1,&data,&rx_data,1,100);
 
-	/*while(SPI_I2S_GetFlagStatus(MFRC522_SPI, SPI_I2S_FLAG_TXE)==RESET);
-	SPI_I2S_SendData(MFRC522_SPI,data);
 
-	while(SPI_I2S_GetFlagStatus(MFRC522_SPI, SPI_I2S_FLAG_RXNE)==RESET);
-	return SPI_I2S_ReceiveData(MFRC522_SPI);*/
-	return rx_data;
-}
 
 /*
  * Ten ham:Write_MFRC5200
@@ -37,16 +21,11 @@ uint8_t RC522_SPI_Transfer(uint8_t data)
  */
 void Write_MFRC522(uint8_t addr, uint8_t val)
 {
-	/* CS LOW */
-	//GPIO_ResetBits(MFRC522_CS_GPIO, MFRC522_CS_PIN);
-  HAL_GPIO_WritePin(GPIOA,GPIO_PIN_4,GPIO_PIN_RESET);
-	//The address is located:0XXXXXX0
-	RC522_SPI_Transfer((addr<<1)&0x7E);
-	RC522_SPI_Transfer(val);
 
-	/* CS HIGH */
-	//GPIO_SetBits(MFRC522_CS_GPIO, MFRC522_CS_PIN);
-	HAL_GPIO_WritePin(GPIOA,GPIO_PIN_4,GPIO_PIN_SET);
+//	//The address is located:0XXXXXX0
+	SPI_TransmitReceiveBlocking((addr<<1)&0x7E,1,SPI_CONTINUE_COM);
+	SPI_TransmitReceiveBlocking(val,1,SPI_END_COM);
+
 }
 
 
@@ -59,18 +38,10 @@ void Write_MFRC522(uint8_t addr, uint8_t val)
 uint8_t Read_MFRC522(uint8_t addr)
 {
 	uint8_t val;
-
-	/* CS LOW */
-	//GPIO_ResetBits(MFRC522_CS_GPIO, MFRC522_CS_PIN);
-	HAL_GPIO_WritePin(GPIOA,GPIO_PIN_4,GPIO_PIN_RESET);
-
 	//The address is located:1XXXXXX0
-	RC522_SPI_Transfer(((addr<<1)&0x7E) | 0x80);
-	val = RC522_SPI_Transfer(0x00);
+	SPI_TransmitReceiveBlocking(((addr<<1)&0x7E) | 0x80,1,SPI_CONTINUE_COM);
+	val = SPI_TransmitReceiveBlocking(0x00,1,SPI_END_COM);
 
-	/* CS HIGH */
-	//GPIO_SetBits(MFRC522_CS_GPIO, MFRC522_CS_PIN);
-	HAL_GPIO_WritePin(GPIOA,GPIO_PIN_4,GPIO_PIN_SET);
 	return val;
 
 }

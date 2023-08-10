@@ -9,6 +9,8 @@
 #define INC_RC522_H_
 
 #include "stm32f4xx_hal.h"
+#include "main.h"
+#include "SPI.h"
 
 #define	uint8_t	unsigned char
 #define	uint	unsigned int

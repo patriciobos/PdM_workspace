@@ -1,22 +1,42 @@
-19:36:43 **** Incremental Build of configuration Debug for project RFID_v2 ****
+23:00:08 **** Incremental Build of configuration Debug for project RFID_v2 ****
 make -j9 all 
-arm-none-eabi-gcc "../Drivers/API/Src/RC522.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"/Users/santiagobualo/Documents/SBualo-CESE/RFID_v2/Drivers/API/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/API/Src/RC522.d" -MT"Drivers/API/Src/RC522.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/API/Src/RC522.o"
-arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"/Users/santiagobualo/Documents/SBualo-CESE/RFID_v2/Drivers/API/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-size   RFID_v2.elf 
+   text	   data	    bss	    dec	    hex	filename
+   9460	     28	   1692	  11180	   2bac	RFID_v2.elf
+Finished building: default.size.stdout
+ 
+23:00:10 **** Incremental Build of configuration Debug for project RFID_v2 ****
+make -j9 all 
+arm-none-eabi-size   RFID_v2.elf 
+   text	   data	    bss	    dec	    hex	filename
+   9460	     28	   1692	  11180	   2bac	RFID_v2.elf
+Finished building: default.size.stdout
+ 
+23:02:15 **** Incremental Build of configuration Debug for project RFID_v2 ****
+make -j9 all 
+arm-none-eabi-gcc "../Drivers/API/Src/TTP229.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"/Users/santiagobualo/Documents/SBualo-CESE/RFID_v2/Drivers/API/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/API/Src/TTP229.d" -MT"Drivers/API/Src/TTP229.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/API/Src/TTP229.o"
 arm-none-eabi-gcc -o "RFID_v2.elf" @"objects.list"   -mcpu=cortex-m4 -T"/Users/santiagobualo/Documents/SBualo-CESE/RFID_v2/STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="RFID_v2.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 Finished building target: RFID_v2.elf
  
 arm-none-eabi-size   RFID_v2.elf 
 arm-none-eabi-objdump -h -S  RFID_v2.elf  > "RFID_v2.list"
    text	   data	    bss	    dec	    hex	filename
-   8996	     28	   1692	  10716	   29dc	RFID_v2.elf
+   9460	     28	   1692	  11180	   2bac	RFID_v2.elf
 Finished building: default.size.stdout
  
 Finished building: RFID_v2.list
  
-19:36:53 **** Incremental Build of configuration Debug for project RFID_v2 ****
+23:03:29 **** Incremental Build of configuration Debug for project RFID_v2 ****
 make -j9 all 
+arm-none-eabi-gcc "../Drivers/API/Src/TTP229.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"/Users/santiagobualo/Documents/SBualo-CESE/RFID_v2/Drivers/API/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/API/Src/TTP229.d" -MT"Drivers/API/Src/TTP229.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/API/Src/TTP229.o"
+arm-none-eabi-gcc -o "RFID_v2.elf" @"objects.list"   -mcpu=cortex-m4 -T"/Users/santiagobualo/Documents/SBualo-CESE/RFID_v2/STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="RFID_v2.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: RFID_v2.elf
+ 
 arm-none-eabi-size   RFID_v2.elf 
+arm-none-eabi-objdump -h -S  RFID_v2.elf  > "RFID_v2.list"
    text	   data	    bss	    dec	    hex	filename
-   8996	     28	   1692	  10716	   29dc	RFID_v2.elf
+   9460	     28	   1692	  11180	   2bac	RFID_v2.elf
 Finished building: default.size.stdout
+ 
+Finished building: RFID_v2.list
  

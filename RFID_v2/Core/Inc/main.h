@@ -28,8 +28,6 @@ extern "C" {
 
 /* Includes ------------------------------------------------------------------*/
 #include "stm32f4xx_hal.h"
-#include "SPI.h"
-#include <stdbool.h>
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
@@ -69,6 +67,10 @@ void Error_Handler(void);
 #define SPI_SDA_GPIO_GPIO_Port GPIOA
 #define RFC_RST_GPIO_Pin GPIO_PIN_0
 #define RFC_RST_GPIO_GPIO_Port GPIOB
+#define KEYBOARD_CLK_Pin GPIO_PIN_10
+#define KEYBOARD_CLK_GPIO_Port GPIOB
+#define KEYBOARD_DATA_Pin GPIO_PIN_8
+#define KEYBOARD_DATA_GPIO_Port GPIOA
 #define TMS_Pin GPIO_PIN_13
 #define TMS_GPIO_Port GPIOA
 #define TCK_Pin GPIO_PIN_14

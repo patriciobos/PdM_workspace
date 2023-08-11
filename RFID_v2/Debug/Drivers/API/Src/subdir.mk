@@ -6,15 +6,18 @@
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
 ../Drivers/API/Src/RC522.c \
-../Drivers/API/Src/SPI.c 
+../Drivers/API/Src/SPI.c \
+../Drivers/API/Src/TTP229.c 
 
 OBJS += \
 ./Drivers/API/Src/RC522.o \
-./Drivers/API/Src/SPI.o 
+./Drivers/API/Src/SPI.o \
+./Drivers/API/Src/TTP229.o 
 
 C_DEPS += \
 ./Drivers/API/Src/RC522.d \
-./Drivers/API/Src/SPI.d 
+./Drivers/API/Src/SPI.d \
+./Drivers/API/Src/TTP229.d 
 
 
 # Each subdirectory must supply rules for building sources it contributes
@@ -24,7 +27,7 @@ Drivers/API/Src/%.o Drivers/API/Src/%.su Drivers/API/Src/%.cyclo: ../Drivers/API
 clean: clean-Drivers-2f-API-2f-Src
 
 clean-Drivers-2f-API-2f-Src:
-	-$(RM) ./Drivers/API/Src/RC522.cyclo ./Drivers/API/Src/RC522.d ./Drivers/API/Src/RC522.o ./Drivers/API/Src/RC522.su ./Drivers/API/Src/SPI.cyclo ./Drivers/API/Src/SPI.d ./Drivers/API/Src/SPI.o ./Drivers/API/Src/SPI.su
+	-$(RM) ./Drivers/API/Src/RC522.cyclo ./Drivers/API/Src/RC522.d ./Drivers/API/Src/RC522.o ./Drivers/API/Src/RC522.su ./Drivers/API/Src/SPI.cyclo ./Drivers/API/Src/SPI.d ./Drivers/API/Src/SPI.o ./Drivers/API/Src/SPI.su ./Drivers/API/Src/TTP229.cyclo ./Drivers/API/Src/TTP229.d ./Drivers/API/Src/TTP229.o ./Drivers/API/Src/TTP229.su
 
 .PHONY: clean-Drivers-2f-API-2f-Src
 

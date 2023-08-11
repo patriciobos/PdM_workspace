@@ -25,6 +25,7 @@
 #include "RC522.h"
 #include "stdio.h"
 #include "string.h"
+#include "TTP229.h"
 
 /* USER CODE END Includes */
 
@@ -71,6 +72,7 @@ uint8_t  KEY2[]={1,2,3,4,5,6};       //{1,2,3,4,5,6};//"mohem";
 uint8_t test;
 uint8_t W[]="zagros-elec";
 uint8_t R[16];
+uint8_t pulsedNumber =0;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -114,6 +116,7 @@ int main(void)
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
   /* USER CODE BEGIN 2 */
+  KEYBOAD_Init();
   SPI_Init();
   MFRC522_Init();
 
@@ -130,45 +133,6 @@ int main(void)
 
 		if (status == MI_OK)
 		{
-
-		//*******************************Read and write on block tag*************************//
-			/*
-				MFRC522_SelectTag(str);
-					test =	MFRC522_Auth(PICC_AUTHENT1A,24,KEY,serNum);
-
-						if(HAL_GPIO_ReadPin(GPIOA,GPIO_PIN_11)==0)
-							{
-
-				  status = MFRC522_Write((uint8_t)24 , W);
-
-						}
-
-
-						if(HAL_GPIO_ReadPin(GPIOA,GPIO_PIN_12)==0)
-							{
-					//HAL_Delay(2000);
-					 status = MFRC522_Read( 24, R);
-						}
-
-			//HAL_Delay(1);
-			*/
-
-			//*******************************Read and write on block tag*************************//
-
-			//*************tag key card when infront of rc522 led is on when is nothig led is off**************//
-			/*
-				if((str[0]==170) || (str[1]==49) || (str[2]==60) || (str[3]==41) || (str[3]==142) )
-			{
-			HAL_GPIO_WritePin(GPIOC,GPIO_PIN_13,0);
-			HAL_Delay(300);
-			}
-
-			if((str[0]==147) || (str[1]==32) || (str[2]==60) || (str[3]==41) || (str[3]==142)){
-			HAL_GPIO_WritePin(GPIOC,GPIO_PIN_13,1);
-
-			}
-			*/
-			//*************tag key card when infront of rc522 led is on when is nothig led is off**************//
 
 
 			//***************************with two tag:key tag is on led and mifer is off led******************//
@@ -190,9 +154,15 @@ int main(void)
 
 		}
 
+		pulsedNumber = KEYBOARD_ReadData();
+		if (pulsedNumber>0){
+			pulsedNumber=0;
+		}
+
   }
 
 }
+
 
 
 /**
@@ -244,6 +214,7 @@ void SystemClock_Config(void)
 
 
 
+
 /**
   * @brief GPIO Initialization Function
   * @param None
@@ -261,11 +232,24 @@ static void MX_GPIO_Init(void)
   __HAL_RCC_GPIOA_CLK_ENABLE();
   __HAL_RCC_GPIOB_CLK_ENABLE();
 
+  /*Configure GPIO pin Output Level */
+  HAL_GPIO_WritePin(SPI_SDA_GPIO_GPIO_Port, SPI_SDA_GPIO_Pin, GPIO_PIN_RESET);
+
+  /*Configure GPIO pin Output Level */
+  HAL_GPIO_WritePin(GPIOB, RFC_RST_GPIO_Pin|KEYBOARD_CLK_Pin, GPIO_PIN_RESET);
+
   /*Configure GPIO pin : B1_Pin */
-   GPIO_InitStruct.Pin = B1_Pin;
-   GPIO_InitStruct.Mode = GPIO_MODE_IT_FALLING;
-   GPIO_InitStruct.Pull = GPIO_NOPULL;
-   HAL_GPIO_Init(B1_GPIO_Port, &GPIO_InitStruct);
+  GPIO_InitStruct.Pin = B1_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_IT_FALLING;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  HAL_GPIO_Init(B1_GPIO_Port, &GPIO_InitStruct);
+
+  /*Configure GPIO pin : SPI_SDA_GPIO_Pin */
+  GPIO_InitStruct.Pin = SPI_SDA_GPIO_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+  HAL_GPIO_Init(SPI_SDA_GPIO_GPIO_Port, &GPIO_InitStruct);
 
 
 /* USER CODE BEGIN MX_GPIO_Init_2 */

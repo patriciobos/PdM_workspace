@@ -23,9 +23,10 @@
 /* USER CODE BEGIN Includes */
 #include "stdio.h"
 #include "RC522.h"
-#include "stdio.h"
 #include "string.h"
 #include "TTP229.h"
+#include "FSM.h"
+#include "USERS_DATA.h"
 
 /* USER CODE END Includes */
 
@@ -47,33 +48,9 @@
 /* Private variables ---------------------------------------------------------*/
 
 
-/* USER CODE BEGIN PV */
-//uint8_t i;
-uint8_t status;
-uint8_t str[MAX_LEN]; // Max_LEN = 16
-
-
-uint8_t serNum[5];
-//char password[16]="123456"; //Max lenght of password is 16 charaters
-//char keypass[16];
-//int cnt=0;
-uint8_t key;
-//uint8_t check,check2;
-
-//E3 CD D8 1B Chapita
-uint8_t Key_Card[4]  = {147, 32, 216, 27};
-//92 94 B7 21 Tarjeta
-uint8_t Key_Card2[4] = {0x92, 0x94, 0xB7, 0x21};
-
-uint8_t  KEY[] = {0xFF,0xFF,0xFF,0xFF,0xFF,0xFF};
-uint8_t  KEY2[]={1,2,3,4,5,6};       //{1,2,3,4,5,6};//"mohem";
-//uint8_t  BLOCK_ADDRS[] =  {1}; //{1, 2, 3};
-
-uint8_t test;
-uint8_t W[]="zagros-elec";
-uint8_t R[16];
+STATE *p2state=NULL;
 uint8_t pulsedNumber =0;
-/* USER CODE END PV */
+
 
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
@@ -119,45 +96,21 @@ int main(void)
   KEYBOAD_Init();
   SPI_Init();
   MFRC522_Init();
-
+  USERS_DATA_INIT();
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-	  	  //Estas 3 lineas se usan para leer tarjetas
-		status = MFRC522_Request(PICC_REQIDL, str);	//MFRC522_Request(0x26, str)
-		status = MFRC522_Anticoll(str);//Take a collision, look up 5 bytes
-		memcpy(serNum, str, 5);//function for c language:(para1:that place save data,para2:the the source of data,para3:size)
 
-		if (status == MI_OK)
-		{
+	  eventos evento;
+	  p2state=FSM_GetInitState();
 
-
-			//***************************with two tag:key tag is on led and mifer is off led******************//
-
-			if((str[0]==Key_Card[0]) || (str[1]==Key_Card[1]) || (str[2]==Key_Card[2]) || (str[3]==Key_Card[3]) )
-			{
-			HAL_GPIO_WritePin(GPIOC,GPIO_PIN_13,0);
-
-			}
+	  while((evento = get_event())!= FIN_ARCHIVO)
+		  	 p2state=fsm(p2state,evento); //Invocamosalinterpretedelamaquinadeestados
 
 
-			if((str[0]==Key_Card2[0]) || (str[1]==Key_Card2[1]) || (str[2]==Key_Card2[2]) || (str[3]==Key_Card2[3]))
-			{
-
-			HAL_GPIO_WritePin(GPIOC,GPIO_PIN_13,1);
-
-			}
-
-
-		}
-
-		pulsedNumber = KEYBOARD_ReadData();
-		if (pulsedNumber>0){
-			pulsedNumber=0;
-		}
 
   }
 

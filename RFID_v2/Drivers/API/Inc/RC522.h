@@ -153,9 +153,9 @@ void MFRC522_Halt(void);
 
 
 
+bool get_RFID_event_ocurrence(void);
 
-
-
+uint8_t * GetKeyRead(void);
 
 
 

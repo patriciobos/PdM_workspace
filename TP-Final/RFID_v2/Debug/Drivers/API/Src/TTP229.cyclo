@@ -1,0 +1,4 @@
+../Drivers/API/Src/TTP229.c:11:6:KEYBOAD_Init	1
+../Drivers/API/Src/TTP229.c:38:9:KEYBOARD_ReadData	4
+../Drivers/API/Src/TTP229.c:62:6:KEYBOARD_Write_CLK	1
+../Drivers/API/Src/TTP229.c:68:15:KEYBOARD_Read_DATA	1

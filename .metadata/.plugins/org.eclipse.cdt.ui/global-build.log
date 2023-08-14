@@ -1,57 +1,57 @@
-21:02:40 **** Incremental Build of configuration Debug for project Practica-5 ****
+18:59:31 **** Incremental Build of configuration Debug for project RFID_v2 ****
 make -j9 all 
-arm-none-eabi-gcc "../Drivers/API/Src/FSM.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"/Users/santiagobualo/Documents/SBualo-CESE/Programación de Microcontroladores/Practica-5/Drivers/API/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/API/Src/FSM.d" -MT"Drivers/API/Src/FSM.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/API/Src/FSM.o"
-arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"/Users/santiagobualo/Documents/SBualo-CESE/Programación de Microcontroladores/Practica-5/Drivers/API/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
-../Drivers/API/Src/FSM.c: In function 'debounceFSM_timer_update':
-../Drivers/API/Src/FSM.c:37:56: warning: pointer targets in passing argument 1 of 'uartSendString' differ in signedness [-Wpointer-sign]
-   37 |                                         uartSendString("Flanco Descendente\r\n");
-      |                                                        ^~~~~~~~~~~~~~~~~~~~~~~~
-      |                                                        |
-      |                                                        char *
-In file included from ../Drivers/API/Src/FSM.c:10:
-/Users/santiagobualo/Documents/SBualo-CESE/Programación de Microcontroladores/Practica-5/Drivers/API/Inc/API_uart.h:22:31: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'char *'
-   22 | void uartSendString(uint8_t * pstring);
-      |                     ~~~~~~~~~~^~~~~~~
-../Drivers/API/Src/FSM.c:49:56: warning: pointer targets in passing argument 1 of 'uartSendString' differ in signedness [-Wpointer-sign]
-   49 |                                         uartSendString("Flanco Ascendente\r\n");
-      |                                                        ^~~~~~~~~~~~~~~~~~~~~~~
-      |                                                        |
-      |                                                        char *
-In file included from ../Drivers/API/Src/FSM.c:10:
-/Users/santiagobualo/Documents/SBualo-CESE/Programación de Microcontroladores/Practica-5/Drivers/API/Inc/API_uart.h:22:31: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'char *'
-   22 | void uartSendString(uint8_t * pstring);
-      |                     ~~~~~~~~~~^~~~~~~
-../Core/Src/main.c: In function 'main':
-../Drivers/API/Src/FSM.c:32:9: warning: enumeration value 'BUTTON_UP' not handled in switch [-Wswitch]
-   32 |         switch(FSMPointer){
-      |         ^~~~~~
-../Drivers/API/Src/FSM.c:32:9: warning: enumeration value 'BUTTON_DOWN' not handled in switch [-Wswitch]
-../Core/Src/main.c:92:15: warning: implicit declaration of function 'uartInit' [-Wimplicit-function-declaration]
-   92 |   bool init = uartInit();
-      |               ^~~~~~~~
-../Core/Src/main.c:92:8: warning: unused variable 'init' [-Wunused-variable]
-   92 |   bool init = uartInit();
-      |        ^~~~
-../Drivers/API/Src/FSM.c: In function 'debounceFSM_button_update':
-../Drivers/API/Src/FSM.c:66:9: warning: enumeration value 'BUTTON_FALLING' not handled in switch [-Wswitch]
-   66 |         switch (*myFSM) {
-      |         ^~~~~~
-../Drivers/API/Src/FSM.c:66:9: warning: enumeration value 'BUTTON_RAISING' not handled in switch [-Wswitch]
-arm-none-eabi-gcc -o "Practica-5.elf" @"objects.list"   -mcpu=cortex-m4 -T"/Users/santiagobualo/Documents/SBualo-CESE/Programación de Microcontroladores/Practica-5/STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Practica-5.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: Practica-5.elf
+arm-none-eabi-gcc "../Drivers/API/Src/FSM.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"/Users/santiagobualo/Documents/SBualo-CESE/RFID_v2/Drivers/API/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/API/Src/FSM.d" -MT"Drivers/API/Src/FSM.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/API/Src/FSM.o"
+arm-none-eabi-gcc "../Drivers/API/Src/TTP229.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"/Users/santiagobualo/Documents/SBualo-CESE/RFID_v2/Drivers/API/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/API/Src/TTP229.d" -MT"Drivers/API/Src/TTP229.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/API/Src/TTP229.o"
+arm-none-eabi-gcc -o "RFID_v2.elf" @"objects.list"   -mcpu=cortex-m4 -T"/Users/santiagobualo/Documents/SBualo-CESE/RFID_v2/STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="RFID_v2.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: RFID_v2.elf
  
-arm-none-eabi-size   Practica-5.elf 
-arm-none-eabi-objdump -h -S  Practica-5.elf  > "Practica-5.list"
+arm-none-eabi-size   RFID_v2.elf 
+arm-none-eabi-objdump -h -S  RFID_v2.elf  > "RFID_v2.list"
    text	   data	    bss	    dec	    hex	filename
-   9204	     24	   1664	  10892	   2a8c	Practica-5.elf
+  12848	    328	   1872	  15048	   3ac8	RFID_v2.elf
 Finished building: default.size.stdout
  
-Finished building: Practica-5.list
+Finished building: RFID_v2.list
  
-21:02:49 **** Incremental Build of configuration Debug for project Practica-5 ****
+18:59:50 **** Incremental Build of configuration Debug for project RFID_v2 ****
 make -j9 all 
-arm-none-eabi-size   Practica-5.elf 
+arm-none-eabi-size   RFID_v2.elf 
    text	   data	    bss	    dec	    hex	filename
-   9204	     24	   1664	  10892	   2a8c	Practica-5.elf
+  12848	    328	   1872	  15048	   3ac8	RFID_v2.elf
+Finished building: default.size.stdout
+ 
+19:01:46 **** Incremental Build of configuration Debug for project RFID_v2 ****
+make -j9 all 
+arm-none-eabi-gcc "../Drivers/API/Src/FSM.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"/Users/santiagobualo/Documents/SBualo-CESE/RFID_v2/Drivers/API/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/API/Src/FSM.d" -MT"Drivers/API/Src/FSM.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/API/Src/FSM.o"
+arm-none-eabi-gcc -o "RFID_v2.elf" @"objects.list"   -mcpu=cortex-m4 -T"/Users/santiagobualo/Documents/SBualo-CESE/RFID_v2/STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="RFID_v2.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: RFID_v2.elf
+ 
+arm-none-eabi-size   RFID_v2.elf 
+arm-none-eabi-objdump -h -S  RFID_v2.elf  > "RFID_v2.list"
+   text	   data	    bss	    dec	    hex	filename
+  12872	    332	   1868	  15072	   3ae0	RFID_v2.elf
+Finished building: default.size.stdout
+ 
+Finished building: RFID_v2.list
+ 
+19:05:34 **** Incremental Build of configuration Debug for project RFID_v2 ****
+make -j9 all 
+arm-none-eabi-gcc "../Drivers/API/Src/FSM.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"/Users/santiagobualo/Documents/SBualo-CESE/RFID_v2/Drivers/API/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/API/Src/FSM.d" -MT"Drivers/API/Src/FSM.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/API/Src/FSM.o"
+arm-none-eabi-gcc -o "RFID_v2.elf" @"objects.list"   -mcpu=cortex-m4 -T"/Users/santiagobualo/Documents/SBualo-CESE/RFID_v2/STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="RFID_v2.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: RFID_v2.elf
+ 
+arm-none-eabi-size   RFID_v2.elf 
+arm-none-eabi-objdump -h -S  RFID_v2.elf  > "RFID_v2.list"
+   text	   data	    bss	    dec	    hex	filename
+  12872	    332	   1868	  15072	   3ae0	RFID_v2.elf
+Finished building: default.size.stdout
+ 
+Finished building: RFID_v2.list
+ 
+19:05:49 **** Incremental Build of configuration Debug for project RFID_v2 ****
+make -j9 all 
+arm-none-eabi-size   RFID_v2.elf 
+   text	   data	    bss	    dec	    hex	filename
+  12872	    332	   1868	  15072	   3ae0	RFID_v2.elf
 Finished building: default.size.stdout
  

@@ -6,22 +6,28 @@
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
 ../Drivers/API/Src/FSM.c \
+../Drivers/API/Src/LED.c \
 ../Drivers/API/Src/RC522.c \
 ../Drivers/API/Src/SPI.c \
+../Drivers/API/Src/TIMER.c \
 ../Drivers/API/Src/TTP229.c \
 ../Drivers/API/Src/USERS_DATA.c 
 
 OBJS += \
 ./Drivers/API/Src/FSM.o \
+./Drivers/API/Src/LED.o \
 ./Drivers/API/Src/RC522.o \
 ./Drivers/API/Src/SPI.o \
+./Drivers/API/Src/TIMER.o \
 ./Drivers/API/Src/TTP229.o \
 ./Drivers/API/Src/USERS_DATA.o 
 
 C_DEPS += \
 ./Drivers/API/Src/FSM.d \
+./Drivers/API/Src/LED.d \
 ./Drivers/API/Src/RC522.d \
 ./Drivers/API/Src/SPI.d \
+./Drivers/API/Src/TIMER.d \
 ./Drivers/API/Src/TTP229.d \
 ./Drivers/API/Src/USERS_DATA.d 
 
@@ -33,7 +39,7 @@ Drivers/API/Src/%.o Drivers/API/Src/%.su Drivers/API/Src/%.cyclo: ../Drivers/API
 clean: clean-Drivers-2f-API-2f-Src
 
 clean-Drivers-2f-API-2f-Src:
-	-$(RM) ./Drivers/API/Src/FSM.cyclo ./Drivers/API/Src/FSM.d ./Drivers/API/Src/FSM.o ./Drivers/API/Src/FSM.su ./Drivers/API/Src/RC522.cyclo ./Drivers/API/Src/RC522.d ./Drivers/API/Src/RC522.o ./Drivers/API/Src/RC522.su ./Drivers/API/Src/SPI.cyclo ./Drivers/API/Src/SPI.d ./Drivers/API/Src/SPI.o ./Drivers/API/Src/SPI.su ./Drivers/API/Src/TTP229.cyclo ./Drivers/API/Src/TTP229.d ./Drivers/API/Src/TTP229.o ./Drivers/API/Src/TTP229.su ./Drivers/API/Src/USERS_DATA.cyclo ./Drivers/API/Src/USERS_DATA.d ./Drivers/API/Src/USERS_DATA.o ./Drivers/API/Src/USERS_DATA.su
+	-$(RM) ./Drivers/API/Src/FSM.cyclo ./Drivers/API/Src/FSM.d ./Drivers/API/Src/FSM.o ./Drivers/API/Src/FSM.su ./Drivers/API/Src/LED.cyclo ./Drivers/API/Src/LED.d ./Drivers/API/Src/LED.o ./Drivers/API/Src/LED.su ./Drivers/API/Src/RC522.cyclo ./Drivers/API/Src/RC522.d ./Drivers/API/Src/RC522.o ./Drivers/API/Src/RC522.su ./Drivers/API/Src/SPI.cyclo ./Drivers/API/Src/SPI.d ./Drivers/API/Src/SPI.o ./Drivers/API/Src/SPI.su ./Drivers/API/Src/TIMER.cyclo ./Drivers/API/Src/TIMER.d ./Drivers/API/Src/TIMER.o ./Drivers/API/Src/TIMER.su ./Drivers/API/Src/TTP229.cyclo ./Drivers/API/Src/TTP229.d ./Drivers/API/Src/TTP229.o ./Drivers/API/Src/TTP229.su ./Drivers/API/Src/USERS_DATA.cyclo ./Drivers/API/Src/USERS_DATA.d ./Drivers/API/Src/USERS_DATA.o ./Drivers/API/Src/USERS_DATA.su
 
 .PHONY: clean-Drivers-2f-API-2f-Src
 

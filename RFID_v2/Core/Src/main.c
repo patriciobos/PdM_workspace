@@ -27,23 +27,8 @@
 #include "TTP229.h"
 #include "FSM.h"
 #include "USERS_DATA.h"
-
-/* USER CODE END Includes */
-
-/* Private typedef -----------------------------------------------------------*/
-/* USER CODE BEGIN PTD */
-
-
-/* USER CODE END PTD */
-
-/* Private define ------------------------------------------------------------*/
-/* USER CODE BEGIN PD */
-/* USER CODE END PD */
-
-/* Private macro -------------------------------------------------------------*/
-/* USER CODE BEGIN PM */
-
-/* USER CODE END PM */
+#include "TIMER.h"
+#include "LED.h"
 
 /* Private variables ---------------------------------------------------------*/
 
@@ -92,11 +77,14 @@ int main(void)
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
+
   /* USER CODE BEGIN 2 */
   KEYBOAD_Init();
   SPI_Init();
   MFRC522_Init();
   USERS_DATA_INIT();
+  LED_Init();
+  TIMERS_Init();
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -115,6 +103,7 @@ int main(void)
   }
 
 }
+
 
 
 
@@ -168,6 +157,7 @@ void SystemClock_Config(void)
 
 
 
+
 /**
   * @brief GPIO Initialization Function
   * @param None
@@ -186,16 +176,13 @@ static void MX_GPIO_Init(void)
   __HAL_RCC_GPIOB_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
+  HAL_GPIO_WritePin(GPIOC, LED_DOOR_STATUS_Pin|LED_USER_FEEDBACK_Pin, GPIO_PIN_RESET);
+
+  /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(SPI_SDA_GPIO_GPIO_Port, SPI_SDA_GPIO_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOB, RFC_RST_GPIO_Pin|KEYBOARD_CLK_Pin, GPIO_PIN_RESET);
-
-  /*Configure GPIO pin : B1_Pin */
-  GPIO_InitStruct.Pin = B1_Pin;
-  GPIO_InitStruct.Mode = GPIO_MODE_IT_FALLING;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
-  HAL_GPIO_Init(B1_GPIO_Port, &GPIO_InitStruct);
 
   /*Configure GPIO pin : SPI_SDA_GPIO_Pin */
   GPIO_InitStruct.Pin = SPI_SDA_GPIO_Pin;
@@ -204,6 +191,10 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(SPI_SDA_GPIO_GPIO_Port, &GPIO_InitStruct);
 
+
+  /* EXTI interrupt init*/
+  HAL_NVIC_SetPriority(EXTI15_10_IRQn, 0, 0);
+  HAL_NVIC_EnableIRQ(EXTI15_10_IRQn);
 
 /* USER CODE BEGIN MX_GPIO_Init_2 */
 /* USER CODE END MX_GPIO_Init_2 */

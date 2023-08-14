@@ -8,7 +8,6 @@
 
 #include "TTP229.h"
 
-
 void KEYBOAD_Init(void){
 
 	  GPIO_InitTypeDef GPIO_InitStruct = {0};
@@ -18,10 +17,16 @@ void KEYBOAD_Init(void){
 	  GPIO_InitStruct.Pull = GPIO_NOPULL;
 	  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
 	  HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
-
+//
+//	  /*Configure GPIO pin : KEYBOARD_DATA_Pin */
+//	  GPIO_InitStruct.Pin = KEYBOARD_DATA_Pin;
+//	  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+//	  GPIO_InitStruct.Pull = GPIO_MODE_IT_RISING_FALLING;
+//	  HAL_GPIO_Init(KEYBOARD_DATA_GPIO_Port, &GPIO_InitStruct);
+//
 	  /*Configure GPIO pin : KEYBOARD_DATA_Pin */
 	  GPIO_InitStruct.Pin = KEYBOARD_DATA_Pin;
-	  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+	  GPIO_InitStruct.Mode = GPIO_MODE_IT_RISING_FALLING;
 	  GPIO_InitStruct.Pull = GPIO_NOPULL;
 	  HAL_GPIO_Init(KEYBOARD_DATA_GPIO_Port, &GPIO_InitStruct);
 

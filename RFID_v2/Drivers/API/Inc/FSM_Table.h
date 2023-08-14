@@ -55,15 +55,15 @@ STATE estado_ingreso_cuarto_numero[]= {
 /*** estado_6 ***/
 STATE estado_validando_pin[]= {
 {PIN_VALIDO,estado_puerta_abierta,abrir_puerta},
-{PIN_INVALIDO,estado_ingreso_primer_numero,lectura_primer_numero},
+{PIN_INVALIDO,estado_ingreso_primer_numero,no_operation},
 {TIMEOUT_DEFAULT,estado_puerta_cerrada,no_operation},
 {FIN_TABLA,estado_validando_pin,no_operation}
 };
 
 /*** estado_6 ***/
 STATE estado_puerta_abierta[]= {
-{TIMEOUT_PUERTA_ABIERTA,estado_puerta_cerrada,cerrar_puerta},
-{FIN_TABLA,estado_puerta_cerrada,no_operation}//Cambiar despues
+{TIMEOUT_DEFAULT,estado_puerta_cerrada,cerrar_puerta},
+{FIN_TABLA,estado_puerta_abierta,no_operation}//Cambiar despues
 };
 
 

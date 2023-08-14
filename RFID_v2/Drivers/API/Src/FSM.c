@@ -10,9 +10,12 @@
 #include "RC522.h"
 #include "TTP229.h"
 #include "USERS_DATA.h"
+#include "TIMER.h"
+#include "LED.h"
 
 int tarjetavalida=0;
-uint8_t NumeroPulsado = 0;
+uint8_t NumeroPulsado = -1;
+uint8_t KevPressed = 0;
 int pinValido = 0;
 
 STATE* FSM_GetInitState(void){
@@ -39,14 +42,20 @@ eventos get_event(void){
 	if(get_RFID_event_ocurrence()){
 		return LECTURA_TARJETA;
 	}
-	uint8_t pulsedNumber = 0;
-	pulsedNumber = KEYBOARD_ReadData();
+
+	if (NumeroPulsado==0){
+	uint8_t pulsedNumber = KEYBOARD_ReadData();
 	if (pulsedNumber>0){
-		NumeroPulsado = pulsedNumber;
-		return LECTURA_NUMERO_TECLADO;
+			LED_KeyboardPress();
+			HAL_Delay(500);
+			NumeroPulsado = pulsedNumber;
+			return LECTURA_NUMERO_TECLADO;
+		}
 	}
 
+
 	if(tarjetavalida >0){
+		LED_Card_Blink();
 		tarjetavalida = 0;
 		return TARJETA_VALIDA;
 	}
@@ -55,14 +64,19 @@ eventos get_event(void){
 			return TARJETA_INVALIDA;
 	}
 	if(pinValido >0){
-			tarjetavalida = 0;
+		pinValido = 0;
 			return PIN_VALIDO;
 		}
 	if(pinValido <0){
-			tarjetavalida = 0;
+		LED_Wrong_Pin_Blink();
+		pinValido = 0;
 			return PIN_INVALIDO;
 		}
 
+	if (TIME_GetTimeStatus(TIMER_TIMEOUT)){
+		TIME_ResetTimeStatus(TIMER_TIMEOUT);
+		return TIMEOUT_DEFAULT;
+	}
 	return FIN_TABLA;
 
 }
@@ -76,8 +90,10 @@ void no_operation(void){
 
 
 void validar_id_tarjeta(void){
+	TIMER_Start(TIMER_TIMEOUT);
 	if (USERS_DATA_VALIDATE_KEYCARD(GetKeyRead())){
 		tarjetavalida = 1;
+		NumeroPulsado=0; //permito eventos de teclado
 	}
 	else {
 		tarjetavalida = -1;
@@ -85,22 +101,29 @@ void validar_id_tarjeta(void){
 }
 
 void lectura_primer_numero(void){
-
+	TIMER_Start(TIMER_TIMEOUT);
 	USERS_DATA_COLLECT_FIRST_NUMBER( &NumeroPulsado);
 	NumeroPulsado=0;
+	LED_KeyboardPress();
 }
 void lectura_segundo_numero(void){
+	TIMER_Start(TIMER_TIMEOUT);
 	USERS_DATA_COLLECT_SECOND_NUMBER( &NumeroPulsado);
 	NumeroPulsado=0;
+	LED_KeyboardPress();
 
 }
 void lectura_tercer_numero(void){
+	TIMER_Start(TIMER_TIMEOUT);
 	USERS_DATA_COLLECT_THIRD_NUMBER( &NumeroPulsado);
 	NumeroPulsado=0;
+	LED_KeyboardPress();
 }
 void lectura_cuarto_numero(void){
+	TIMER_Start(TIMER_TIMEOUT);
 	USERS_DATA_COLLECT_FOURTH_NUMBER( &NumeroPulsado);
 	NumeroPulsado=0;
+	LED_KeyboardPress();
 	if ( USERS_DATA_VALIDATE_PIN()){
 		pinValido=1;
 	}else {
@@ -111,12 +134,13 @@ void validar_pin_numerico(void){
 
 }
 void abrir_puerta(void){
+	LED_OPEN_DOOR();
+	NumeroPulsado = -1;
 
-	HAL_Delay(100);
 }
 void cerrar_puerta(void){
 
-	HAL_Delay(100);
+	LED_OPEN_DOOR();
 }
 void reset_FSM(void){
 

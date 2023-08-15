@@ -1,0 +1,6 @@
+../Drivers/API/Src/TIMER.c:15:6:TIMERS_Init	1
+../Drivers/API/Src/TIMER.c:20:9:TIME_GetTimeStatus	2
+../Drivers/API/Src/TIMER.c:34:6:TIME_ResetTimeStatus	2
+../Drivers/API/Src/TIMER.c:47:6:TIMER_Start	2
+../Drivers/API/Src/TIMER.c:64:6:TIM10_Init	2
+../Drivers/API/Src/TIMER.c:92:6:HAL_TIM_PeriodElapsedCallback	2

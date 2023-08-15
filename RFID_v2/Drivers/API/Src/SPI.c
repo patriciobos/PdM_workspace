@@ -3,7 +3,7 @@
 
 
 SPI_HandleTypeDef hspi1;
-bool_t SPI_is_running=0;
+static bool_t SPI_is_running=0;
 
 
 

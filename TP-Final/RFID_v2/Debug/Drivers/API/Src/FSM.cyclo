@@ -1,0 +1,13 @@
+../Drivers/API/Src/FSM.c:21:8:FSM_GetInitState	1
+../Drivers/API/Src/FSM.c:29:8:fsm	3
+../Drivers/API/Src/FSM.c:40:9:get_event	9
+../Drivers/API/Src/FSM.c:87:6:no_operation	1
+../Drivers/API/Src/FSM.c:92:6:validar_id_tarjeta	2
+../Drivers/API/Src/FSM.c:103:6:lectura_primer_numero	1
+../Drivers/API/Src/FSM.c:109:6:lectura_segundo_numero	1
+../Drivers/API/Src/FSM.c:116:6:lectura_tercer_numero	1
+../Drivers/API/Src/FSM.c:122:6:lectura_cuarto_numero	2
+../Drivers/API/Src/FSM.c:133:6:validar_pin_numerico	1
+../Drivers/API/Src/FSM.c:136:6:abrir_puerta	1
+../Drivers/API/Src/FSM.c:141:6:cerrar_puerta	1
+../Drivers/API/Src/FSM.c:145:6:reset_FSM	1

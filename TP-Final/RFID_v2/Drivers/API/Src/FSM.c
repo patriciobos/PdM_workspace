@@ -13,10 +13,9 @@
 #include "TIMER.h"
 #include "LED.h"
 
-int tarjetavalida=0;
-uint8_t NumeroPulsado = -1;
-uint8_t KevPressed = 0;
-int pinValido = 0;
+static int tarjetavalida=0;
+static uint8_t NumeroPulsado = -1;
+static int pinValido = 0;
 
 STATE* FSM_GetInitState(void){
 
@@ -143,5 +142,7 @@ void cerrar_puerta(void){
 	LED_OPEN_DOOR();
 }
 void reset_FSM(void){
-
+tarjetavalida=0;
+NumeroPulsado = -1;
+pinValido = 0;
 }

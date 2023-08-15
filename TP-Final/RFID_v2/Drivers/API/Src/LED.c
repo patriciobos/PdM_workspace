@@ -7,6 +7,9 @@
 
 #include "LED.h"
 
+//Funciones privadas
+static void LED_delay(void);
+
 void LED_Init(void){
 
 	 GPIO_InitTypeDef GPIO_InitStruct = {0};
@@ -41,7 +44,7 @@ void LED_Timeout_Blink(void){
 	HAL_GPIO_WritePin(LED_USER_FEEDBACK_GPIO_Port, LED_USER_FEEDBACK_Pin,TURN_LED_OFF);
 }
 
-void LED_delay(void){
+static void LED_delay(void){
 
 	int i=0;
 	while (i<1000000){

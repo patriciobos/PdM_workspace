@@ -14,7 +14,6 @@
 
 void LED_Init(void);
 void LED_Timeout_Blink(void);
-void LED_delay(void);
 void LED_KeyboardPress(void);
 void LED_Card_Blink(void);
 void LED_OPEN_DOOR(void);

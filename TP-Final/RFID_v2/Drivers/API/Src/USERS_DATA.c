@@ -10,17 +10,17 @@
 
 //
 ////E3 CD D8 1B Chapita
-uint8_t AdminKey_Card[4]  = {147, 32, 216, 27};
-uint8_t AdminPIN[4]  = {1, 2, 3, 4};
+static uint8_t AdminKey_Card[4]  = {147, 32, 216, 27};
+static uint8_t AdminPIN[4]  = {1, 2, 3, 4};
 ////92 94 B7 21 Tarjeta
 //uint8_t Key_Card2[4] = {0x92, 0x94, 0xB7, 0x21};
 
-user ArrayOfUsers[MAX_USERS];
-uint8_t CurrentMaxUserNumbers=0;
-uint8_t WhoIsThis=0;
+static user ArrayOfUsers[MAX_USERS];
+static uint8_t CurrentMaxUserNumbers=0;
+static uint8_t WhoIsThis=0;
 
-uint8_t ReadKeyCard[4]={0,0,0,0};
-uint8_t ReadPIN[4]={0,0,0,0};
+//static uint8_t ReadKeyCard[4]={0,0,0,0};
+static uint8_t ReadPIN[4]={0,0,0,0};
 
 
 void USERS_DATA_INIT(void){

@@ -142,13 +142,13 @@ extern SPI_HandleTypeDef hspi1;
 //-----------------------------------------------
 // The desire to use
 void MFRC522_Init(void);
-uint8_t MFRC522_Request(uint8_t reqMode, uint8_t *TagType);
-uint8_t MFRC522_Anticoll(uint8_t *serNum);
-uint8_t MFRC522_SelectTag(uint8_t *serNum);
-uint8_t MFRC522_Auth(uint8_t authMode, uint8_t BlockAddr, uint8_t *Sectorkey, uint8_t *serNum);
-uint8_t MFRC522_Write(uint8_t blockAddr, uint8_t *writeData);
-uint8_t MFRC522_Read(uint8_t blockAddr, uint8_t *recvData);
-void MFRC522_Halt(void);
+//uint8_t MFRC522_Request(uint8_t reqMode, uint8_t *TagType);
+//uint8_t MFRC522_Anticoll(uint8_t *serNum);
+//uint8_t MFRC522_SelectTag(uint8_t *serNum);
+//uint8_t MFRC522_Auth(uint8_t authMode, uint8_t BlockAddr, uint8_t *Sectorkey, uint8_t *serNum);
+//uint8_t MFRC522_Write(uint8_t blockAddr, uint8_t *writeData);
+//uint8_t MFRC522_Read(uint8_t blockAddr, uint8_t *recvData);
+//void MFRC522_Halt(void);
 
 
 

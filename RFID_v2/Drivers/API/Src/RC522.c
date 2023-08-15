@@ -14,27 +14,21 @@
 
 /* USER CODE BEGIN PV */
 //uint8_t i;
-uint8_t status;
-uint8_t str[MAX_LEN]; // Max_LEN = 16
+static uint8_t status;
+static uint8_t str[MAX_LEN]; // Max_LEN = 16
 
 
-uint8_t serNum[5];
-//char password[16]="123456"; //Max lenght of password is 16 charaters
-//char keypass[16];
-//int cnt=0;
-uint8_t key;
-//uint8_t check,check2;
+static uint8_t serNum[5];
 
 
-uint8_t  KEY[] = {0xFF,0xFF,0xFF,0xFF,0xFF,0xFF};
-uint8_t  KEY2[]={1,2,3,4,5,6};       //{1,2,3,4,5,6};//"mohem";
-//uint8_t  BLOCK_ADDRS[] =  {1}; //{1, 2, 3};
+static uint8_t MFRC522_Request(uint8_t reqMode, uint8_t *TagType);
+static uint8_t MFRC522_Anticoll(uint8_t *serNum);
+//static uint8_t MFRC522_SelectTag(uint8_t *serNum);
+//static uint8_t MFRC522_Auth(uint8_t authMode, uint8_t BlockAddr, uint8_t *Sectorkey, uint8_t *serNum);
+//static uint8_t MFRC522_Write(uint8_t blockAddr, uint8_t *writeData);
+//static uint8_t MFRC522_Read(uint8_t blockAddr, uint8_t *recvData);
+//static void MFRC522_Halt(void);
 
-uint8_t test;
-uint8_t W[]="zagros-elec";
-uint8_t R[16];
-
-/* USER CODE END PV */
 
 
 bool get_RFID_event_ocurrence(void){
@@ -82,7 +76,7 @@ uint8_t * GetKeyRead(void){
  * Input: addr-> DIa write only, val-> Value to write
  * Check: No
  */
-void Write_MFRC522(uint8_t addr, uint8_t val)
+static void Write_MFRC522(uint8_t addr, uint8_t val)
 {
 
 //	//The address is located:0XXXXXX0
@@ -98,7 +92,7 @@ void Write_MFRC522(uint8_t addr, uint8_t val)
  * Input: addr-> address doc
  * Look up: Value in the read register
  */
-uint8_t Read_MFRC522(uint8_t addr)
+static uint8_t Read_MFRC522(uint8_t addr)
 {
 	uint8_t val;
 	//The address is located:1XXXXXX0
@@ -116,7 +110,7 @@ uint8_t Read_MFRC522(uint8_t addr)
  * Input: reg - Registers settings; mask - value set
  * Check: No
  */
-void SetBitMask(uint8_t reg, uint8_t mask)
+static void SetBitMask(uint8_t reg, uint8_t mask)
 {
     uint8_t tmp;
     tmp = Read_MFRC522(reg);
@@ -130,7 +124,7 @@ void SetBitMask(uint8_t reg, uint8_t mask)
  * Input: reg - Dia register; mask - Value bit can clear
  * Check: No
  */
-void ClearBitMask(uint8_t reg, uint8_t mask)
+static void ClearBitMask(uint8_t reg, uint8_t mask)
 {
     uint8_t tmp;
     tmp = Read_MFRC522(reg);
@@ -144,7 +138,7 @@ void ClearBitMask(uint8_t reg, uint8_t mask)
  * Input: no
  * Check: no
  */
-void AntennaOn(void)
+static void AntennaOn(void)
 {
 
 
@@ -163,10 +157,10 @@ Read_MFRC522(TxControlReg);
  * Input: no
  * Check: no
  */
-void AntennaOff(void)
-{
-	ClearBitMask(TxControlReg, 0x03);
-}
+//static void AntennaOff(void)
+//{
+//	ClearBitMask(TxControlReg, 0x03);
+//}
 
 
 /*
@@ -175,58 +169,12 @@ void AntennaOff(void)
  * Input: No.
  * Return: No.
  */
-void MFRC522_Reset(void)
+static void MFRC522_Reset(void)
 {
     Write_MFRC522(CommandReg, PCD_RESETPHASE);
 }
 
-/*
- * Ten ham:MFRC522_SPI_Init
- * Wish: Start SPI
- * Input: No.
- * Tra va: No.
- */
-/*void MFRC522_SPI_Init(void)
-{
-	GPIO_InitTypeDef GPIO_InitStruct;
-	SPI_InitTypeDef SPI_InitStruct;
 
-	RCC_APB2PeriphClockCmd(MFRC522_SPI_GPIO_RCC | RCC_APB2Periph_AFIO,ENABLE);		// Enable clock GPIO
-
-	if(MFRC522_SPI==SPI1)
-	{
-		RCC_APB2PeriphClockCmd(MFRC522_SPI_RCC,ENABLE);																// Enable clock SPI1
-	}
-	else
-	{
-		RCC_APB1PeriphClockCmd(MFRC522_SPI_RCC,ENABLE);																// Enable clock SPI2 or SPI3
-	}
-
-	GPIO_InitStruct.GPIO_Pin = MFRC522_SCK_PIN | MFRC522_MISO_PIN | MFRC522_MOSI_PIN;	// SCK, MISO, MOSI
-	GPIO_InitStruct.GPIO_Mode = GPIO_Mode_AF_PP;
-	GPIO_InitStruct.GPIO_Speed = GPIO_Speed_50MHz;
-	GPIO_Init(MFRC522_SPI_GPIO, &GPIO_InitStruct);																	// init GPIO SPI
-
-	SPI_InitStruct.SPI_BaudRatePrescaler = SPI_BaudRatePrescaler_8;
-	SPI_InitStruct.SPI_Direction= SPI_Direction_2Lines_FullDuplex;
-	SPI_InitStruct.SPI_Mode = SPI_Mode_Master;
-	SPI_InitStruct.SPI_DataSize = SPI_DataSize_8b;
-	SPI_InitStruct.SPI_CPOL = SPI_CPOL_Low;
-	SPI_InitStruct.SPI_CPHA = SPI_CPHA_1Edge;
-	SPI_InitStruct.SPI_NSS = SPI_NSS_Soft;
-	SPI_InitStruct.SPI_FirstBit = SPI_FirstBit_MSB;
-	SPI_InitStruct.SPI_CRCPolynomial = 7;
-	SPI_Init(MFRC522_SPI, &SPI_InitStruct);
-
-	SPI_Cmd(MFRC522_SPI, ENABLE);
-}
-*/
-/*
- * Ten ham:InitMFRC522
- * Start RC522
- * Input:  No.
- * Look up:  No.
- */
 void MFRC522_Init(void)
 {
 
@@ -266,7 +214,7 @@ void MFRC522_Init(void)
  *			 backLen - Retrieve the data number
  * Check: MI_OK if successful
  */
-uint8_t MFRC522_ToCard(uint8_t command, uint8_t *sendData, uint8_t sendLen, uint8_t *backData, uint *backLen)
+static uint8_t MFRC522_ToCard(uint8_t command, uint8_t *sendData, uint8_t sendLen, uint8_t *backData, uint *backLen)
 {
     uint8_t status = MI_ERR;
     uint8_t irqEn = 0x00;
@@ -389,7 +337,7 @@ uint8_t MFRC522_ToCard(uint8_t command, uint8_t *sendData, uint8_t sendLen, uint
  *				0x4403 = Mifare_DESFire
  * Return: MI_OK if the bar is curved
  */
-uint8_t MFRC522_Request(uint8_t reqMode, uint8_t *TagType)
+static uint8_t MFRC522_Request(uint8_t reqMode, uint8_t *TagType)
 {
 	uint8_t status;
 	uint backBits;			//The bits are manipulated
@@ -414,7 +362,7 @@ uint8_t MFRC522_Request(uint8_t reqMode, uint8_t *TagType)
  * Input: serNum - Look up the serial the 4 byte, byte 5 is the ma checksum
  * Check: MI_OK if successful
  */
-uint8_t MFRC522_Anticoll(uint8_t *serNum)
+static uint8_t MFRC522_Anticoll(uint8_t *serNum)
 {
     uint8_t status;
     uint8_t i;
@@ -455,34 +403,34 @@ uint8_t MFRC522_Anticoll(uint8_t *serNum)
  * Input: pIndata - Data CRC into calculator, wool - Data data, pOutData - CRC calculation
  * Check: No
  */
-void CalulateCRC(uint8_t *pIndata, uint8_t len, uint8_t *pOutData)
-{
-    uint8_t i, n;
-
-    ClearBitMask(DivIrqReg, 0x04);			//CRCIrq = 0
-    SetBitMask(FIFOLevelReg, 0x80);			//Con tro FIFO
-    //Write_MFRC522(CommandReg, PCD_IDLE);
-
-	//Record in FIFO
-    for (i=0; i<len; i++)
-    {
-		Write_MFRC522(FIFODataReg, *(pIndata+i));
-	}
-    Write_MFRC522(CommandReg, PCD_CALCCRC);
-
-	// Let the CRC computer complete
-    i = 0xFF;
-    do
-    {
-        n = Read_MFRC522(DivIrqReg);
-        i--;
-    }
-    while ((i!=0) && !(n&0x04));			//CRCIrq = 1
-
-	//Doc results in CRC calculation
-    pOutData[0] = Read_MFRC522(CRCResultRegL);
-    pOutData[1] = Read_MFRC522(CRCResultRegM);
-}
+//static void CalulateCRC(uint8_t *pIndata, uint8_t len, uint8_t *pOutData)
+//{
+//    uint8_t i, n;
+//
+//    ClearBitMask(DivIrqReg, 0x04);			//CRCIrq = 0
+//    SetBitMask(FIFOLevelReg, 0x80);			//Con tro FIFO
+//    //Write_MFRC522(CommandReg, PCD_IDLE);
+//
+//	//Record in FIFO
+//    for (i=0; i<len; i++)
+//    {
+//		Write_MFRC522(FIFODataReg, *(pIndata+i));
+//	}
+//    Write_MFRC522(CommandReg, PCD_CALCCRC);
+//
+//	// Let the CRC computer complete
+//    i = 0xFF;
+//    do
+//    {
+//        n = Read_MFRC522(DivIrqReg);
+//        i--;
+//    }
+//    while ((i!=0) && !(n&0x04));			//CRCIrq = 1
+//
+//	//Doc results in CRC calculation
+//    pOutData[0] = Read_MFRC522(CRCResultRegL);
+//    pOutData[1] = Read_MFRC522(CRCResultRegM);
+//}
 
 
 /*
@@ -491,36 +439,36 @@ void CalulateCRC(uint8_t *pIndata, uint8_t len, uint8_t *pOutData)
  * Input:serNum--So serial the
  * Check: Use the same amount of inspection
  */
-uint8_t MFRC522_SelectTag(uint8_t *serNum)
-{
-	uint8_t i;
-	uint8_t status;
-	uint8_t size;
-	uint recvBits;
-	uint8_t buffer[9];
-
-	//ClearBitMask(Status2Reg, 0x08);			//MFCrypto1On=0
-
-    buffer[0] = PICC_SElECTTAG;
-    buffer[1] = 0x70;
-    for (i=0; i<5; i++)
-    {
-    	buffer[i+2] = *(serNum+i);
-    }
-	CalulateCRC(buffer, 7, &buffer[7]);		//??
-    status = MFRC522_ToCard(PCD_TRANSCEIVE, buffer, 9, buffer, &recvBits);
-
-    if ((status == MI_OK) && (recvBits == 0x18))
-    {
-		size = buffer[0];
-	}
-    else
-    {
-		size = 0;
-	}
-
-    return size;
-}
+//static uint8_t MFRC522_SelectTag(uint8_t *serNum)
+//{
+//	uint8_t i;
+//	uint8_t status;
+//	uint8_t size;
+//	uint recvBits;
+//	uint8_t buffer[9];
+//
+//	//ClearBitMask(Status2Reg, 0x08);			//MFCrypto1On=0
+//
+//    buffer[0] = PICC_SElECTTAG;
+//    buffer[1] = 0x70;
+//    for (i=0; i<5; i++)
+//    {
+//    	buffer[i+2] = *(serNum+i);
+//    }
+//	CalulateCRC(buffer, 7, &buffer[7]);		//??
+//    status = MFRC522_ToCard(PCD_TRANSCEIVE, buffer, 9, buffer, &recvBits);
+//
+//    if ((status == MI_OK) && (recvBits == 0x18))
+//    {
+//		size = buffer[0];
+//	}
+//    else
+//    {
+//		size = 0;
+//	}
+//
+//    return size;
+//}
 
 
 /*
@@ -534,33 +482,33 @@ uint8_t MFRC522_SelectTag(uint8_t *serNum)
              serNum - So serial the, 4 bytes
  * Check: MI_OK if successful
  */
-uint8_t MFRC522_Auth(uint8_t authMode, uint8_t BlockAddr, uint8_t *Sectorkey, uint8_t *serNum)
-{
-    uint8_t status;
-    uint recvBits;
-    uint8_t i;
-	uint8_t buff[12];
-
-	//Confirmation + Address + password + quick number
-    buff[0] = authMode;
-    buff[1] = BlockAddr;
-    for (i=0; i<6; i++)
-    {
-		buff[i+2] = *(Sectorkey+i);
-	}
-    for (i=0; i<4; i++)
-    {
-		buff[i+8] = *(serNum+i);
-	}
-    status = MFRC522_ToCard(PCD_AUTHENT, buff, 12, buff, &recvBits);
-
-    if ((status != MI_OK) || (!(Read_MFRC522(Status2Reg) & 0x08)))
-    {
-		status = MI_ERR;
-	}
-
-    return status;
-}
+//static uint8_t MFRC522_Auth(uint8_t authMode, uint8_t BlockAddr, uint8_t *Sectorkey, uint8_t *serNum)
+//{
+//    uint8_t status;
+//    uint recvBits;
+//    uint8_t i;
+//	uint8_t buff[12];
+//
+//	//Confirmation + Address + password + quick number
+//    buff[0] = authMode;
+//    buff[1] = BlockAddr;
+//    for (i=0; i<6; i++)
+//    {
+//		buff[i+2] = *(Sectorkey+i);
+//	}
+//    for (i=0; i<4; i++)
+//    {
+//		buff[i+8] = *(serNum+i);
+//	}
+//    status = MFRC522_ToCard(PCD_AUTHENT, buff, 12, buff, &recvBits);
+//
+//    if ((status != MI_OK) || (!(Read_MFRC522(Status2Reg) & 0x08)))
+//    {
+//		status = MI_ERR;
+//	}
+//
+//    return status;
+//}
 
 
 /*
@@ -568,24 +516,24 @@ uint8_t MFRC522_Auth(uint8_t authMode, uint8_t BlockAddr, uint8_t *Sectorkey, ui
  * Doc with data
  * Input: blockAddr - Address location; recvData - Retrieve document output
  * Check: MI_OK if successful
- */
-uint8_t MFRC522_Read(uint8_t blockAddr, uint8_t *recvData)
-{
-    uint8_t status;
-    uint unLen;
-
-    recvData[0] = PICC_READ;
-    recvData[1] = blockAddr;
-    CalulateCRC(recvData,2, &recvData[2]);
-    status = MFRC522_ToCard(PCD_TRANSCEIVE, recvData, 4, recvData, &unLen);
-
-    if ((status != MI_OK) || (unLen != 0x90))
-    {
-        status = MI_ERR;
-    }
-
-    return status;
-}
+// */
+//static uint8_t MFRC522_Read(uint8_t blockAddr, uint8_t *recvData)
+//{
+//    uint8_t status;
+//    uint unLen;
+//
+//    recvData[0] = PICC_READ;
+//    recvData[1] = blockAddr;
+//    CalulateCRC(recvData,2, &recvData[2]);
+//    status = MFRC522_ToCard(PCD_TRANSCEIVE, recvData, 4, recvData, &unLen);
+//
+//    if ((status != MI_OK) || (unLen != 0x90))
+//    {
+//        status = MI_ERR;
+//    }
+//
+//    return status;
+//}
 
 
 /*
@@ -593,42 +541,42 @@ uint8_t MFRC522_Read(uint8_t blockAddr, uint8_t *recvData)
  * wait repeats data
  * Input: blockAddr - locations; writeData - write data
  * Check: MI_OK if successful
- */
-uint8_t MFRC522_Write(uint8_t blockAddr, uint8_t *writeData)
-{
-    uint8_t status;
-    uint recvBits;
-    uint8_t i;
-	uint8_t buff[18];
-
-    buff[0] = PICC_WRITE;
-    buff[1] = blockAddr;
-    CalulateCRC(buff, 2, &buff[2]);
-    status = MFRC522_ToCard(PCD_TRANSCEIVE, buff, 4, buff, &recvBits);
-
-    if ((status != MI_OK) || (recvBits != 4) || ((buff[0] & 0x0F) != 0x0A))
-    {
-		status = MI_ERR;
-	}
-
-    if (status == MI_OK)
-    {
-        for (i=0; i<16; i++)		//16 FIFO bytes recorded
-        {
-        	buff[i] = *(writeData+i);
-        }
-        CalulateCRC(buff, 16, &buff[16]);
-        status = MFRC522_ToCard(PCD_TRANSCEIVE, buff, 18, buff, &recvBits);
-
-		if ((status != MI_OK) || (recvBits != 4) || ((buff[0] & 0x0F) != 0x0A))
-        {
-			status = MI_ERR;
-		}
-    }
-
-    return status;
-}
-
+// */
+//static uint8_t MFRC522_Write(uint8_t blockAddr, uint8_t *writeData)
+//{
+//    uint8_t status;
+//    uint recvBits;
+//    uint8_t i;
+//	uint8_t buff[18];
+//
+//    buff[0] = PICC_WRITE;
+//    buff[1] = blockAddr;
+//    CalulateCRC(buff, 2, &buff[2]);
+//    status = MFRC522_ToCard(PCD_TRANSCEIVE, buff, 4, buff, &recvBits);
+//
+//    if ((status != MI_OK) || (recvBits != 4) || ((buff[0] & 0x0F) != 0x0A))
+//    {
+//		status = MI_ERR;
+//	}
+//
+//    if (status == MI_OK)
+//    {
+//        for (i=0; i<16; i++)		//16 FIFO bytes recorded
+//        {
+//        	buff[i] = *(writeData+i);
+//        }
+//        CalulateCRC(buff, 16, &buff[16]);
+//        status = MFRC522_ToCard(PCD_TRANSCEIVE, buff, 18, buff, &recvBits);
+//
+//		if ((status != MI_OK) || (recvBits != 4) || ((buff[0] & 0x0F) != 0x0A))
+//        {
+//			status = MI_ERR;
+//		}
+//    }
+//
+//    return status;
+//}
+//
 
 /*
  * Ten ham:MFRC522_Halt
@@ -636,14 +584,14 @@ uint8_t MFRC522_Write(uint8_t blockAddr, uint8_t *writeData)
  * Input: NO.
  * Look up: NO.
  */
-void MFRC522_Halt(void)
-{
-	uint unLen;
-	uint8_t buff[4];
-
-	buff[0] = PICC_HALT;
-	buff[1] = 0;
-	CalulateCRC(buff, 2, &buff[2]);
-
-	MFRC522_ToCard(PCD_TRANSCEIVE, buff, 4, buff,&unLen);
-}
+//static void MFRC522_Halt(void)
+//{
+//	uint unLen;
+//	uint8_t buff[4];
+//
+//	buff[0] = PICC_HALT;
+//	buff[1] = 0;
+//	CalulateCRC(buff, 2, &buff[2]);
+//
+//	MFRC522_ToCard(PCD_TRANSCEIVE, buff, 4, buff,&unLen);
+//}

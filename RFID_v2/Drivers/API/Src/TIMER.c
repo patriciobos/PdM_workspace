@@ -8,8 +8,8 @@
 #include "TIMER.h"
 #include "LED.h"
 
-TIM_HandleTypeDef htim10;
-uint8_t TimeIsDone=0;
+TIM_HandleTypeDef htim10; //No puede ser static pq la tienen que ver otros modulos internos
+static uint8_t TimeIsDone=0;
 
 
 void TIMERS_Init(void){

@@ -3,12 +3,15 @@
 	<section name="ExternalProjectImportWizard">
 		<item key="WizardProjectsImportPage.STORE_NESTED_PROJECTS" value="true"/>
 	</section>
-	<section name="ChooseWorkspaceDialogSettings">
-		<item key="DIALOG_X_ORIGIN" value="317"/>
-		<item key="DIALOG_Y_ORIGIN" value="166"/>
-	</section>
-	<section name="WORKBENCH_SETTINGS">
-		<list key="ENABLED_TRANSFERS">
+	<section name="SmartImportWizard">
+		<item key="SmartImportRootWizardPage.STORE_HIDE_ALREADY_OPEN" value="false"/>
+		<item key="SmartImportRootWizardPage.STORE_CLOSE_IMPORTED" value="false"/>
+		<item key="SmartImportRootWizardPage.STORE_NESTED_PROJECTS" value="true"/>
+		<item key="SmartImportRootWizardPage.STORE_CONFIGURE_NATURES" value="true"/>
+		<list key="org.eclipse.ui.internal.wizards.datatransfer.SmartImportRootWizardPage.knownSources">
+			<item value="/Users/santiagobualo/Library/CloudStorage/OneDrive-Personal/Documentos/Maestria/Programacion Micros/Revisiones/CESE_PDM-master/TP4/TP4"/>
+			<item value="/Users/santiagobualo/Library/CloudStorage/OneDrive-Personal/Documentos/Maestria/Programacion Micros/Revisiones/CESE_PDM-master/TP4/TP_PT2"/>
+			<item value="/Users/santiagobualo/Documents/SBualo-CESE/Programación de Microcontroladores"/>
 		</list>
 	</section>
 </section>

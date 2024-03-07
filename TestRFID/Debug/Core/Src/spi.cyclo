@@ -1,0 +1,15 @@
+../Core/Src/spi.c:19:6:SPI_Init	2
+../Core/Src/spi.c:53:7:SPI_CS_Enable	2
+../Core/Src/spi.c:65:8:SPI_Transmit_IT	1
+../Core/Src/spi.c:74:8:SPI_Transmit_Blocking	2
+../Core/Src/spi.c:88:8:SPI_Receive_IT	1
+../Core/Src/spi.c:98:8:SPI_Receive_Blocking	2
+../Core/Src/spi.c:111:8:SPI_Transmit_Receive_IT	1
+../Core/Src/spi.c:122:8:SPI_Transmit_Receive_Blocking	1
+../Core/Src/spi.c:133:6:HAL_SPI_TxCpltCallback	1
+../Core/Src/spi.c:140:6:HAL_SPI_RxCpltCallback	1
+../Core/Src/spi.c:146:6:HAL_SPI_TxRxCpltCallback	1
+../Core/Src/spi.c:155:13:SPI_Fill_Tx_Buffer	2
+../Core/Src/spi.c:163:6:SPI_Read_Rx_Buffer	4
+../Core/Src/spi.c:176:6:SPI_Abort_Blocking	1
+../Core/Src/spi.c:183:9:RC522_SPI_Transfer	1

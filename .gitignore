@@ -50,3 +50,9 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+
+
+#DEBUG Compile Results
+
+Programacion de Microcontroladores/*/Debug
+.metadata

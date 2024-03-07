@@ -1,0 +1,12 @@
+../Drivers/API/Src/RC522.c:34:6:get_RFID_event_ocurrence	2
+../Drivers/API/Src/RC522.c:66:11:GetKeyRead	1
+../Drivers/API/Src/RC522.c:79:13:Write_MFRC522	1
+../Drivers/API/Src/RC522.c:95:16:Read_MFRC522	1
+../Drivers/API/Src/RC522.c:113:13:SetBitMask	1
+../Drivers/API/Src/RC522.c:127:13:ClearBitMask	1
+../Drivers/API/Src/RC522.c:141:13:AntennaOn	1
+../Drivers/API/Src/RC522.c:172:13:MFRC522_Reset	1
+../Drivers/API/Src/RC522.c:178:6:MFRC522_Init	1
+../Drivers/API/Src/RC522.c:217:16:MFRC522_ToCard	16
+../Drivers/API/Src/RC522.c:340:16:MFRC522_Request	3
+../Drivers/API/Src/RC522.c:365:16:MFRC522_Anticoll	4

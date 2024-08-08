@@ -110,8 +110,7 @@ static void MX_UART3_Init(void){
 	/*##-1- Configure the UART peripheral ######################################*/
 	/* Put the USART peripheral in the Asynchronous mode (UART Mode) */
 	/* UART configured as follows:
-		 - Word Length = 8 Bits (7 data bit + 1 parity bit) :
-		 BE CAREFUL : Program 7 data bits + 1 parity bit in PC HyperTerminal
+		 - Word Length = 8 Bits
 		 - Stop Bit    = One Stop bit
 		 - Parity      = NONE parity
 		 - BaudRate    = 9600 baud

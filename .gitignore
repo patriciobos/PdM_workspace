@@ -1,3 +1,6 @@
+.metadata/
+**/Debug/
+
 # Prerequisites
 *.d
 

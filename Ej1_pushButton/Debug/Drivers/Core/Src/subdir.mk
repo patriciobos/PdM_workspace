@@ -1,6 +1,6 @@
 ################################################################################
 # Automatically-generated file. Do not edit!
-# Toolchain: GNU Tools for STM32 (9-2020-q2-update)
+# Toolchain: GNU Tools for STM32 (10.3-2021.10)
 ################################################################################
 
 # Add inputs and outputs from these tool invocations to the build variables 
@@ -21,6 +21,13 @@ C_DEPS += \
 
 
 # Each subdirectory must supply rules for building sources it contributes
-Drivers/Core/Src/%.o: ../Drivers/Core/Src/%.c Drivers/Core/Src/subdir.mk
-	arm-none-eabi-gcc "$<" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F429ZITx -DSTM32F4 -DNUCLEO_F429ZI -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Inc -I"/home/pato/Embebidos/CESE/PdM_workspace/Ej1_pushButton/Drivers/STM32F4xx_HAL_Driver/Inc" -I"/home/pato/Embebidos/CESE/PdM_workspace/Ej1_pushButton/Drivers/CMSIS/Include" -I"/home/pato/Embebidos/CESE/PdM_workspace/Ej1_pushButton/Drivers/CMSIS/Device/ST/STM32F4xx/Include" -I"/home/pato/Embebidos/CESE/PdM_workspace/Ej1_pushButton/Drivers/BSP/STM32F4xx_Nucleo_144" -I"/home/pato/Embebidos/CESE/PdM_workspace/Ej1_pushButton/Drivers/Core/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"$(@:%.o=%.d)" -MT"$@" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "$@"
+Drivers/Core/Src/%.o Drivers/Core/Src/%.su Drivers/Core/Src/%.cyclo: ../Drivers/Core/Src/%.c Drivers/Core/Src/subdir.mk
+	arm-none-eabi-gcc "$<" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F429ZITx -DSTM32F4 -DNUCLEO_F429ZI -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Inc -I"/home/pato/Embebidos/STM32CubeIDE/PdM_workspace/Ej1_pushButton/Drivers/STM32F4xx_HAL_Driver/Inc" -I"/home/pato/Embebidos/STM32CubeIDE/PdM_workspace/Ej1_pushButton/Drivers/CMSIS/Include" -I"/home/pato/Embebidos/STM32CubeIDE/PdM_workspace/Ej1_pushButton/Drivers/CMSIS/Device/ST/STM32F4xx/Include" -I"/home/pato/Embebidos/STM32CubeIDE/PdM_workspace/Ej1_pushButton/Drivers/BSP/STM32F4xx_Nucleo_144" -I"/home/pato/Embebidos/STM32CubeIDE/PdM_workspace/Ej1_pushButton/Drivers/Core/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"$(@:%.o=%.d)" -MT"$@" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "$@"
+
+clean: clean-Drivers-2f-Core-2f-Src
+
+clean-Drivers-2f-Core-2f-Src:
+	-$(RM) ./Drivers/Core/Src/stm32f4xx_it.cyclo ./Drivers/Core/Src/stm32f4xx_it.d ./Drivers/Core/Src/stm32f4xx_it.o ./Drivers/Core/Src/stm32f4xx_it.su ./Drivers/Core/Src/syscalls.cyclo ./Drivers/Core/Src/syscalls.d ./Drivers/Core/Src/syscalls.o ./Drivers/Core/Src/syscalls.su ./Drivers/Core/Src/sysmem.cyclo ./Drivers/Core/Src/sysmem.d ./Drivers/Core/Src/sysmem.o ./Drivers/Core/Src/sysmem.su
+
+.PHONY: clean-Drivers-2f-Core-2f-Src
 

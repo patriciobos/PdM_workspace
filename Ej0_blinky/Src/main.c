@@ -72,7 +72,7 @@ int main(void)
   while (1)
   {
 	  BSP_LED_Toggle(LED2);
-	  HAL_Delay(100);
+	  HAL_Delay(1500);
   }
 }
 
